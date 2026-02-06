@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ============================================================
+   REVIVAL CRAFT COCKTAILS — Dark & Moody Theme
+   ============================================================ */
+
+@theme inline {
+  /* Core palette */
+  --color-revival-black: #0A0A0A;
+  --color-revival-charcoal: #141414;
+  --color-revival-dark: #1A1A1A;
+  --color-revival-muted: #2A2A2A;
+  --color-revival-border: #333333;
+
+  /* Accent — warm amber/gold */
+  --color-revival-amber: #C8A050;
+  --color-revival-amber-light: #D4B068;
+  --color-revival-amber-dim: #8A6E38;
+
+  /* Text */
+  --color-revival-cream: #F5F0E8;
+  --color-revival-cream-muted: #B8B0A0;
+  --color-revival-cream-dim: #787068;
+
+  /* Status */
+  --color-revival-open: #4ADE80;
+  --color-revival-closed: #6B7280;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+body {
+  background-color: var(--color-revival-black);
+  color: var(--color-revival-cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   Scrollbar (dark theme)
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-revival-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-revival-muted);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-revival-border);
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+::selection {
+  background-color: var(--color-revival-amber);
+  color: var(--color-revival-black);
+}
+
+/* ============================================================
+   Focus styles
+   ============================================================ */
+*:focus-visible {
+  outline: 2px solid var(--color-revival-amber);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
