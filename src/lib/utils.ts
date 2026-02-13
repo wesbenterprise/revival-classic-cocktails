@@ -53,11 +53,11 @@ export function isCurrentlyOpen(hours: HoursConfig): boolean {
   return currentMinutes >= openMinutes && currentMinutes < closeMinutes;
 }
 
-export function isClosingSoon(hours: HoursConfig, withinMinutes = 60): boolean {
+export function minutesToClose(hours: HoursConfig): number | null {
   const today = getTodayDow();
   const todayHours = hours[today];
 
-  if (todayHours.is_closed || !todayHours.open || !todayHours.close) return false;
+  if (todayHours.is_closed || !todayHours.open || !todayHours.close) return null;
 
   const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
   let currentMinutes = now.getHours() * 60 + now.getMinutes();
@@ -76,9 +76,9 @@ export function isClosingSoon(hours: HoursConfig, withinMinutes = 60): boolean {
     }
   }
 
-  // Must be currently open and within the closing window
-  if (currentMinutes < openMinutes || currentMinutes >= closeMinutes) return false;
-  return closeMinutes - currentMinutes <= withinMinutes;
+  // Must be currently open
+  if (currentMinutes < openMinutes || currentMinutes >= closeMinutes) return null;
+  return closeMinutes - currentMinutes;
 }
 
 export function getTodayHoursString(hours: HoursConfig): string {

@@ -2,34 +2,41 @@
 
 interface StatusBadgeProps {
   isOpen: boolean;
-  closingSoon?: boolean;
+  minutesToClose: number | null;
   todayHours: string;
 }
 
-export default function StatusBadge({ isOpen, closingSoon, todayHours }: StatusBadgeProps) {
-  const showClosingSoon = isOpen && closingSoon;
+export default function StatusBadge({ isOpen, minutesToClose, todayHours }: StatusBadgeProps) {
+  // Three open tiers: normal, closing soon (<60m), last call (<20m)
+  const lastCall = isOpen && minutesToClose !== null && minutesToClose <= 20;
+  const closingSoon = isOpen && !lastCall && minutesToClose !== null && minutesToClose <= 60;
 
-  const dotColor = showClosingSoon
-    ? 'bg-amber-500'
-    : isOpen
-      ? 'bg-revival-open'
-      : 'bg-revival-closed';
+  let dotColor: string;
+  let pingClass: string;
+  let labelColor: string;
+  let label: string;
 
-  const pingClass = showClosingSoon
-    ? 'animate-glow-amber bg-amber-500'
-    : 'animate-ping bg-revival-open';
-
-  const labelColor = showClosingSoon
-    ? 'text-amber-500'
-    : isOpen
-      ? 'text-revival-open'
-      : 'text-revival-closed';
-
-  const label = showClosingSoon
-    ? 'Come Soon'
-    : isOpen
-      ? 'Open Now'
-      : 'Closed';
+  if (lastCall) {
+    dotColor = 'bg-orange-600';
+    pingClass = 'animate-glow-orange bg-orange-600';
+    labelColor = 'text-orange-500';
+    label = 'Open — Last Call';
+  } else if (closingSoon) {
+    dotColor = 'bg-amber-400';
+    pingClass = 'animate-glow-amber bg-amber-400';
+    labelColor = 'text-amber-400';
+    label = 'Open';
+  } else if (isOpen) {
+    dotColor = 'bg-revival-open';
+    pingClass = 'animate-ping bg-revival-open';
+    labelColor = 'text-revival-open';
+    label = 'Open';
+  } else {
+    dotColor = 'bg-revival-closed';
+    pingClass = '';
+    labelColor = 'text-revival-closed';
+    label = 'Closed';
+  }
 
   return (
     <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-revival-dark/80 border border-revival-border/50">

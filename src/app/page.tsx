@@ -6,7 +6,7 @@ import StatusBadge from '@/components/StatusBadge';
 import TonightBlock from '@/components/TonightBlock';
 import WeeklyStrip from '@/components/WeeklyStrip';
 import { TonightData, ScheduleRecurring } from '@/types/database';
-import { getTodayDow, isCurrentlyOpen, isClosingSoon, getTodayHoursString } from '@/lib/utils';
+import { getTodayDow, isCurrentlyOpen, minutesToClose, getTodayHoursString } from '@/lib/utils';
 import { HoursConfig } from '@/types/database';
 
 const DEMO_SPECIALS: ScheduleRecurring[] = [
@@ -59,7 +59,7 @@ const DEMO_HOURS: HoursConfig = {
 
 export default function HomePage() {
   const isOpen = isCurrentlyOpen(DEMO_HOURS);
-  const closingSoon = isClosingSoon(DEMO_HOURS);
+  const minsLeft = minutesToClose(DEMO_HOURS);
   const todayHours = getTodayHoursString(DEMO_HOURS);
 
   // Dynamic tonight's special based on current day (EST)
@@ -92,7 +92,7 @@ export default function HomePage() {
           </p>
 
           {/* Status */}
-          <StatusBadge isOpen={isOpen} closingSoon={closingSoon} todayHours={todayHours} />
+          <StatusBadge isOpen={isOpen} minutesToClose={minsLeft} todayHours={todayHours} />
           <p className="text-revival-cream-muted text-xs tracking-wide -mt-4">
             119 S Kentucky Ave, Lakeland, FL 33801
           </p>
