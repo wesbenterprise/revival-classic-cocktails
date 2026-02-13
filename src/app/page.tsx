@@ -81,6 +81,9 @@ export default function HomePage() {
 
           {/* Status */}
           <StatusBadge isOpen={isOpen} todayHours={todayHours} />
+          <p className="text-revival-cream-muted text-xs tracking-wide -mt-4">
+            119 S Kentucky Ave, Lakeland, FL 33801
+          </p>
           <a
             href={GOOGLE_MAPS_URL}
             target="_blank"
