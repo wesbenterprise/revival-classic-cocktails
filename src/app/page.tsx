@@ -1,17 +1,12 @@
-import { MapPin, Gift } from 'lucide-react';
+'use client';
+
+import { MapPin, Gift, Navigation } from 'lucide-react';
+import Link from 'next/link';
 import StatusBadge from '@/components/StatusBadge';
 import TonightBlock from '@/components/TonightBlock';
 import WeeklyStrip from '@/components/WeeklyStrip';
 import { TonightData, ScheduleRecurring } from '@/types/database';
-
-// ============================================================
-// DEMO DATA — Replace with Supabase queries when connected
-// ============================================================
-const DEMO_TONIGHT: TonightData = {
-  type: 'recurring',
-  title: 'Whiskey Wednesday',
-  description: '$2 off all bourbon pours. Because midweek deserves something warm.',
-};
+import { getTodayDow } from '@/lib/utils';
 
 const DEMO_SPECIALS: ScheduleRecurring[] = [
   {
@@ -48,10 +43,19 @@ const DEMO_SPECIALS: ScheduleRecurring[] = [
 
 // ============================================================
 
+const GOOGLE_MAPS_URL = 'https://maps.google.com/?q=119+S+Kentucky+Ave+Lakeland+FL+33801';
+
 export default function HomePage() {
   // TODO: Replace with real data from Supabase
   const isOpen = true;
   const todayHours = '5 PM – 12 AM';
+
+  // Dynamic tonight's special based on current day (EST)
+  const today = getTodayDow();
+  const tonightSpecial = DEMO_SPECIALS.find(s => s.day === today);
+  const tonightData: TonightData = tonightSpecial
+    ? { type: 'recurring', title: tonightSpecial.title, description: tonightSpecial.description || '' }
+    : { type: 'recurring', title: 'Craft Cocktails', description: 'Handcrafted drinks in the heart of downtown Lakeland.' };
 
   return (
     <div className="min-h-screen">
@@ -59,9 +63,9 @@ export default function HomePage() {
           HERO
           ============================ */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
-        {/* Background gradient (replace with photo later) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-revival-charcoal via-revival-black to-revival-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-revival-amber)_0%,_transparent_70%)] opacity-[0.04]" />
+        {/* Semi-transparent overlay — global moody background shows through */}
+        <div className="absolute inset-0 bg-revival-black/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-revival-amber)_0%,_transparent_70%)] opacity-[0.06]" />
 
         <div className="relative z-10 flex flex-col items-center gap-8 px-6 animate-fade-in">
           {/* Logo */}
@@ -77,14 +81,23 @@ export default function HomePage() {
 
           {/* Status */}
           <StatusBadge isOpen={isOpen} todayHours={todayHours} />
+          <a
+            href={GOOGLE_MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-revival-cream-dim text-xs tracking-wide hover:text-revival-amber transition-colors -mt-4"
+          >
+            <Navigation size={11} />
+            Directions
+          </a>
 
           {/* Tonight feature */}
-          <TonightBlock data={DEMO_TONIGHT} />
+          <TonightBlock data={tonightData} />
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
             <a
-              href="https://maps.google.com"
+              href={GOOGLE_MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="
@@ -132,7 +145,18 @@ export default function HomePage() {
           <br />
           Good company.
         </p>
-        <p className="mt-6 text-revival-cream-dim text-sm tracking-wide">
+        <p className="mt-6 text-revival-cream-muted text-sm leading-relaxed max-w-md mx-auto">
+          Founded by Jeannie Weaver Lopez, Revival was born from one belief —
+          Lakeland deserved a place where the drinks were taken seriously but the
+          people never were. Her spirit lives on in every pour.
+        </p>
+        <Link
+          href="/jeannie"
+          className="inline-block mt-4 text-revival-amber text-sm tracking-wide hover:text-revival-amber-light transition-colors"
+        >
+          Her Story →
+        </Link>
+        <p className="mt-8 text-revival-cream-dim text-xs tracking-wide">
           No reservations. Just walk in.
         </p>
       </section>
