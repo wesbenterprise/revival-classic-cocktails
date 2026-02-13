@@ -1,6 +1,6 @@
 'use client';
 
-import { MapPin, Gift, Navigation } from 'lucide-react';
+import { MapPin, Gift, Navigation, Phone } from 'lucide-react';
 import Link from 'next/link';
 import StatusBadge from '@/components/StatusBadge';
 import TonightBlock from '@/components/TonightBlock';
@@ -84,6 +84,13 @@ export default function HomePage() {
           <p className="text-revival-cream-muted text-xs tracking-wide -mt-4">
             119 S Kentucky Ave, Lakeland, FL 33801
           </p>
+          <a
+            href="tel:+18636066090"
+            className="inline-flex items-center gap-1.5 text-revival-cream-muted text-xs tracking-wide hover:text-revival-amber transition-colors -mt-4"
+          >
+            <Phone size={11} />
+            (863) 606-6090
+          </a>
           <a
             href={GOOGLE_MAPS_URL}
             target="_blank"
