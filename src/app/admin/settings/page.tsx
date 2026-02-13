@@ -1,43 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import { SITE_HOURS, SITE_ADDRESS, SITE_SOCIAL } from '@/lib/siteConfig';
+import { DayOfWeek, HoursEntry } from '@/types/database';
+import { DAY_LABELS } from '@/lib/utils';
 
-type DayOfWeek = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
-
-interface HoursEntry {
-  open: string;
-  close: string;
-  is_closed: boolean;
-}
-
-const dayLabels: Record<DayOfWeek, string> = {
-  monday: 'Monday', tuesday: 'Tuesday', wednesday: 'Wednesday', thursday: 'Thursday',
-  friday: 'Friday', saturday: 'Saturday', sunday: 'Sunday',
-};
 const dayOrder: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 export default function AdminSettings() {
   const [saved, setSaved] = useState(false);
 
-  const [hours, setHours] = useState<Record<DayOfWeek, HoursEntry>>({
-    monday: { open: '17:00', close: '00:00', is_closed: false },
-    tuesday: { open: '17:00', close: '00:00', is_closed: false },
-    wednesday: { open: '17:00', close: '00:00', is_closed: false },
-    thursday: { open: '17:00', close: '01:00', is_closed: false },
-    friday: { open: '17:00', close: '02:00', is_closed: false },
-    saturday: { open: '17:00', close: '02:00', is_closed: false },
-    sunday: { open: '', close: '', is_closed: true },
-  });
+  const [hours, setHours] = useState<Record<DayOfWeek, HoursEntry>>(SITE_HOURS);
 
-  const [address, setAddress] = useState({
-    street: '119 S Kentucky Ave',
-    city: 'Lakeland',
-    state: 'FL',
-    zip: '33801',
-    google_maps_url: 'https://maps.google.com/?q=Revival+Craft+Cocktails+Lakeland+FL',
-  });
+  const [address, setAddress] = useState(SITE_ADDRESS);
 
-  const [social, setSocial] = useState({ instagram: 'https://instagram.com/revivallakeland' });
+  const [social, setSocial] = useState(SITE_SOCIAL);
   const [giftCardUrl, setGiftCardUrl] = useState('');
   const [announcement, setAnnouncement] = useState({ text: '', is_active: false });
   const [phone, setPhone] = useState('');
@@ -96,7 +73,7 @@ export default function AdminSettings() {
         <div className="space-y-2">
           {dayOrder.map((day) => (
             <div key={day} className="flex items-center gap-3">
-              <span className="w-20 text-sm text-[#888] shrink-0">{dayLabels[day].slice(0, 3)}</span>
+              <span className="w-20 text-sm text-[#888] shrink-0">{DAY_LABELS[day].slice(0, 3)}</span>
               <button
                 onClick={() => updateHours(day, 'is_closed', !hours[day].is_closed)}
                 className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors shrink-0 ${!hours[day].is_closed ? 'bg-[#4ADE80]' : 'bg-[#333]'}`}
@@ -109,14 +86,14 @@ export default function AdminSettings() {
                 <div className="flex items-center gap-2 flex-1">
                   <input
                     type="time"
-                    value={hours[day].open}
+                    value={hours[day].open ?? ''}
                     onChange={(e) => updateHours(day, 'open', e.target.value)}
                     className="bg-[#111] border border-[#333] rounded-lg px-2 py-1.5 text-white text-sm focus:outline-none focus:border-[#C8A050] [color-scheme:dark] w-28"
                   />
                   <span className="text-[#555] text-sm">to</span>
                   <input
                     type="time"
-                    value={hours[day].close}
+                    value={hours[day].close ?? ''}
                     onChange={(e) => updateHours(day, 'close', e.target.value)}
                     className="bg-[#111] border border-[#333] rounded-lg px-2 py-1.5 text-white text-sm focus:outline-none focus:border-[#C8A050] [color-scheme:dark] w-28"
                   />

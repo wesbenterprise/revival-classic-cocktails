@@ -7,7 +7,7 @@ import TonightBlock from '@/components/TonightBlock';
 import WeeklyStrip from '@/components/WeeklyStrip';
 import { TonightData, ScheduleRecurring } from '@/types/database';
 import { getTodayDow, isCurrentlyOpen, minutesToClose, getTodayHoursString } from '@/lib/utils';
-import { HoursConfig } from '@/types/database';
+import { SITE_HOURS, SITE_ADDRESS } from '@/lib/siteConfig';
 
 const DEMO_SPECIALS: ScheduleRecurring[] = [
   {
@@ -44,23 +44,10 @@ const DEMO_SPECIALS: ScheduleRecurring[] = [
 
 // ============================================================
 
-const GOOGLE_MAPS_URL = 'https://maps.google.com/?q=119+S+Kentucky+Ave+Lakeland+FL+33801';
-
-// Demo hours — replace with Supabase query
-const DEMO_HOURS: HoursConfig = {
-  sunday: { open: null, close: null, is_closed: true },
-  monday: { open: null, close: null, is_closed: true },
-  tuesday: { open: '17:00', close: '00:00', is_closed: false },
-  wednesday: { open: '17:00', close: '00:00', is_closed: false },
-  thursday: { open: '17:00', close: '00:00', is_closed: false },
-  friday: { open: '17:00', close: '02:00', is_closed: false },
-  saturday: { open: '17:00', close: '02:00', is_closed: false },
-};
-
 export default function HomePage() {
-  const isOpen = isCurrentlyOpen(DEMO_HOURS);
-  const minsLeft = minutesToClose(DEMO_HOURS);
-  const todayHours = getTodayHoursString(DEMO_HOURS);
+  const isOpen = isCurrentlyOpen(SITE_HOURS);
+  const minsLeft = minutesToClose(SITE_HOURS);
+  const todayHours = getTodayHoursString(SITE_HOURS);
 
   // Dynamic tonight's special based on current day (EST)
   const today = getTodayDow();
@@ -104,7 +91,7 @@ export default function HomePage() {
             (863) 606-6090
           </a>
           <a
-            href={GOOGLE_MAPS_URL}
+            href={SITE_ADDRESS.google_maps_url}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-revival-cream-dim text-xs tracking-wide hover:text-revival-amber transition-colors -mt-4"
@@ -119,7 +106,7 @@ export default function HomePage() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
             <a
-              href={GOOGLE_MAPS_URL}
+              href={SITE_ADDRESS.google_maps_url}
               target="_blank"
               rel="noopener noreferrer"
               className="
