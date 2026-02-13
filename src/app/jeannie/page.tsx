@@ -48,10 +48,18 @@ export default function JeanniePage() {
           </p>
 
           <p>
-            A Fort Meade native who made Lakeland her home, Jeannie spent years honing her
-            craft behind the bar at Linksters Tap Room before deciding downtown Lakeland
-            needed something different: a sophisticated cocktail lounge where the drinks were
-            taken seriously but the people never were.
+            Born Lillie Jean Lopez in Fort Meade, Florida, Jeannie — as everyone knew her —
+            was a force from the start. A graduate of Fort Meade High School, Polk State
+            College, and the University of South Florida, she poured that education and drive
+            into the thing she loved most: bringing people together over a well-made drink.
+          </p>
+
+          <p>
+            She spent years honing her craft behind the bar at Linksters Tap Room before
+            deciding downtown Lakeland needed something different: a sophisticated cocktail
+            lounge where the drinks were taken seriously but the people never were. A place
+            inspired by the mid-century era of cocktail culture — where you could talk
+            comfortably without shouting over jukeboxes or games of pool.
           </p>
 
           <p>
@@ -59,27 +67,30 @@ export default function JeanniePage() {
             space that once held a record shop and a costume store — into the warm, moody room
             that Revival is today. The concept was simple and ambitious at the same time: no
             gimmicks, no snazz, just the belief that a beverage program can challenge you to
-            enjoy some of earth's finest pleasures.
+            enjoy some of earth&apos;s finest pleasures.
           </p>
 
           <p>
             And she was right. Revival quickly became a cornerstone of downtown Lakeland — the
             kind of place where regulars felt like family, where a bartender would remember
             your name and your drink, and where a conversation with a stranger could turn into
-            a lasting friendship. Jeannie built that. Not just the business, but the culture.
+            a lasting friendship. Jeannie was constantly experimenting with new liquors and
+            ingredients, redefining what a cocktail could be and setting the standard for
+            Lakeland&apos;s cocktail scene. She built not just the business, but the culture.
           </p>
 
           <p>
             She went on to open The Peach House in the historic Lake Morton neighborhood,
             bringing the same entrepreneurial spirit and community-first approach to a new
             venture. Her impact on downtown Lakeland extended far beyond the walls of her
-            businesses.
+            businesses — she was an inspiring force known for her unmatched dedication,
+            remarkable creativity, and commitment to quality.
           </p>
 
           <p>
-            Jeannie passed away on November 14, 2024 at the age of 39, after complications
-            from a respiratory illness. She left behind her husband Ryan, their daughter
-            Pepper, and a community that will never forget her.
+            Jeannie passed away on November 14, 2024 at the age of 39, at Tampa General
+            Hospital after complications from a respiratory illness. She left behind her
+            husband Ryan, their daughter Pepper, and a community that will never forget her.
           </p>
 
           {/* Quote */}
