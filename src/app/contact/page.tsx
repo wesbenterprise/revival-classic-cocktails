@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { Suspense, useState, FormEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Send, CheckCircle, AlertCircle, Upload, X, Phone } from 'lucide-react';
 
@@ -73,6 +73,14 @@ const GUEST_COUNTS = [
 const VALID_CATEGORIES: ContactCategory[] = ['general', 'private_events', 'catering', 'press', 'employment', 'vendor', 'feedback'];
 
 export default function ContactPage() {
+  return (
+    <Suspense>
+      <ContactForm />
+    </Suspense>
+  );
+}
+
+function ContactForm() {
   const searchParams = useSearchParams();
   const paramCategory = searchParams.get('category');
   const initialCategory: ContactCategory =
