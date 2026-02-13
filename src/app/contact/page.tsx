@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Send, CheckCircle, AlertCircle, Upload, X, Phone } from 'lucide-react';
 
 // ============================================================
@@ -69,12 +70,21 @@ const GUEST_COUNTS = [
 
 // ============================================================
 
+const VALID_CATEGORIES: ContactCategory[] = ['general', 'private_events', 'catering', 'press', 'employment', 'vendor', 'feedback'];
+
 export default function ContactPage() {
+  const searchParams = useSearchParams();
+  const paramCategory = searchParams.get('category');
+  const initialCategory: ContactCategory =
+    paramCategory && VALID_CATEGORIES.includes(paramCategory as ContactCategory)
+      ? (paramCategory as ContactCategory)
+      : 'general';
+
   const [form, setForm] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
-    category: 'general',
+    category: initialCategory,
     message: '',
     event_date: '',
     guest_count: '',

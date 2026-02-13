@@ -27,6 +27,7 @@ export default function Footer() {
               <Link href="/gallery" className="text-sm text-revival-cream-muted hover:text-revival-cream transition-colors">Gallery</Link>
               <Link href="/merch" className="text-sm text-revival-cream-muted hover:text-revival-cream transition-colors">Merch</Link>
               <Link href="/contact" className="text-sm text-revival-cream-muted hover:text-revival-cream transition-colors">Contact Us</Link>
+              <Link href="/contact?category=employment" className="text-sm text-revival-cream-muted hover:text-revival-cream transition-colors">Career Opportunities</Link>
             </div>
           </div>
 
