@@ -1,4 +1,5 @@
 import { MenuItem, MenuCategory } from '@/types/database';
+import DrinkItem from '@/components/DrinkItem';
 
 // ============================================================
 // DEMO DATA — Replace with Supabase query
@@ -8,102 +9,102 @@ const DEMO_MENU: MenuItem[] = [
   {
     id: '1', category: 'house', name: 'The Revival',
     description: 'Bourbon, honey, lemon, rosemary smoke',
-    price: 15, spirit_base: 'bourbon', badge: null, sort_order: 0,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 15, spirit_base: 'bourbon', badge: null, image_url: '/images/drinks/the-revival.jpg',
+    sort_order: 0, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '2', category: 'house', name: 'Midnight in Lakeland',
     description: 'Mezcal, activated charcoal, agave, lime, black salt rim',
-    price: 16, spirit_base: 'mezcal', badge: 'new', sort_order: 1,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 16, spirit_base: 'mezcal', badge: 'new', image_url: '/images/drinks/midnight-in-lakeland.jpg',
+    sort_order: 1, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '3', category: 'house', name: 'Golden Hour',
     description: 'Gin, turmeric, passion fruit, elderflower, prosecco float',
-    price: 15, spirit_base: 'gin', badge: null, sort_order: 2,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 15, spirit_base: 'gin', badge: null, image_url: '/images/drinks/golden-hour.jpg',
+    sort_order: 2, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '4', category: 'house', name: 'Velvet Fog',
     description: 'Vodka, creme de violette, lemon, egg white, lavender mist',
-    price: 14, spirit_base: 'vodka', badge: null, sort_order: 3,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 14, spirit_base: 'vodka', badge: null, image_url: '/images/drinks/velvet-fog.jpg',
+    sort_order: 3, is_archived: false, created_at: '', updated_at: '',
   },
   // Classics
   {
     id: '5', category: 'classics', name: 'Old Fashioned',
     description: 'Bourbon, demerara, Angostura, orange peel',
-    price: 14, spirit_base: 'bourbon', badge: null, sort_order: 0,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 14, spirit_base: 'bourbon', badge: null, image_url: '/images/drinks/old-fashioned.jpg',
+    sort_order: 0, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '6', category: 'classics', name: 'Negroni',
     description: 'Gin, Campari, sweet vermouth',
-    price: 14, spirit_base: 'gin', badge: null, sort_order: 1,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 14, spirit_base: 'gin', badge: null, image_url: '/images/drinks/negroni.jpg',
+    sort_order: 1, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '7', category: 'classics', name: 'Daiquiri',
     description: 'White rum, lime, simple — done right',
-    price: 13, spirit_base: 'rum', badge: null, sort_order: 2,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 13, spirit_base: 'rum', badge: null, image_url: '/images/drinks/daiquiri.jpg',
+    sort_order: 2, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '8', category: 'classics', name: 'Manhattan',
     description: 'Rye, sweet vermouth, Angostura, luxardo cherry',
-    price: 15, spirit_base: 'rye', badge: null, sort_order: 3,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 15, spirit_base: 'rye', badge: null, image_url: '/images/drinks/manhattan.jpg',
+    sort_order: 3, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '9', category: 'classics', name: 'Espresso Martini',
     description: 'Vodka, espresso, coffee liqueur, vanilla',
-    price: 15, spirit_base: 'vodka', badge: null, sort_order: 4,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 15, spirit_base: 'vodka', badge: null, image_url: '/images/drinks/espresso-martini.jpg',
+    sort_order: 4, is_archived: false, created_at: '', updated_at: '',
   },
   // Spirit Free
   {
     id: '10', category: 'spirit_free', name: 'Garden Party',
     description: 'Cucumber, elderflower, lime, soda, mint',
-    price: 10, spirit_base: null, badge: null, sort_order: 0,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 10, spirit_base: null, badge: null, image_url: '/images/drinks/garden-party.jpg',
+    sort_order: 0, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '11', category: 'spirit_free', name: 'Smoke Signal',
     description: 'Lapsang souchong tea, ginger, honey, lemon',
-    price: 10, spirit_base: null, badge: 'new', sort_order: 1,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 10, spirit_base: null, badge: 'new', image_url: '/images/drinks/smoke-signal.jpg',
+    sort_order: 1, is_archived: false, created_at: '', updated_at: '',
   },
   // Beer & Wine
   {
     id: '12', category: 'beer_wine', name: 'Rotating Draft',
     description: 'Ask your bartender — it changes weekly',
-    price: 8, spirit_base: null, badge: null, sort_order: 0,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 8, spirit_base: null, badge: null, image_url: null,
+    sort_order: 0, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '13', category: 'beer_wine', name: 'House Red',
     description: 'Cotes du Rhone, France',
-    price: 12, spirit_base: null, badge: null, sort_order: 1,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 12, spirit_base: null, badge: null, image_url: null,
+    sort_order: 1, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '14', category: 'beer_wine', name: 'House White',
     description: 'Albarino, Spain',
-    price: 12, spirit_base: null, badge: null, sort_order: 2,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 12, spirit_base: null, badge: null, image_url: null,
+    sort_order: 2, is_archived: false, created_at: '', updated_at: '',
   },
   // Rotating
   {
     id: '15', category: 'rotating', name: 'Winter Solstice',
     description: 'Rye, allspice dram, maple, walnut bitters, cinnamon',
-    price: 16, spirit_base: 'rye', badge: 'seasonal', sort_order: 0,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 16, spirit_base: 'rye', badge: 'seasonal', image_url: '/images/drinks/winter-solstice.jpg',
+    sort_order: 0, is_archived: false, created_at: '', updated_at: '',
   },
   {
     id: '16', category: 'rotating', name: 'Orchard Smash',
     description: 'Apple brandy, pear, thyme, lemon, sparkling cider',
-    price: 15, spirit_base: 'brandy', badge: 'seasonal', sort_order: 1,
-    is_archived: false, created_at: '', updated_at: '',
+    price: 15, spirit_base: 'brandy', badge: 'seasonal', image_url: '/images/drinks/orchard-smash.jpg',
+    sort_order: 1, is_archived: false, created_at: '', updated_at: '',
   },
 ];
 
@@ -203,46 +204,7 @@ export default function MenuPage() {
               {/* Items */}
               <div className="space-y-6">
                 {items.map((item) => (
-                  <div key={item.id} className="group">
-                    <div className="flex items-baseline justify-between gap-4">
-                      {/* Name + badge */}
-                      <div className="flex items-baseline gap-2 min-w-0">
-                        <h3 className="font-display text-lg text-revival-cream group-hover:text-revival-amber transition-colors">
-                          {item.name}
-                        </h3>
-                        {item.badge && (
-                          <span className={`
-                            flex-none text-[10px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-full
-                            ${item.badge === 'new'
-                              ? 'bg-revival-amber/20 text-revival-amber'
-                              : 'bg-revival-muted text-revival-cream-muted'
-                            }
-                          `}>
-                            {item.badge}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Dots + Price */}
-                      <div className="flex items-baseline gap-2 flex-none">
-                        <span className="hidden sm:block text-revival-border tracking-[0.3em] text-xs">
-                          ···········
-                        </span>
-                        {item.price && (
-                          <span className="text-revival-cream-muted text-sm tabular-nums">
-                            {item.price}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    {item.description && (
-                      <p className="mt-1 text-revival-cream-dim text-sm leading-relaxed">
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
+                  <DrinkItem key={item.id} item={item} />
                 ))}
               </div>
             </section>

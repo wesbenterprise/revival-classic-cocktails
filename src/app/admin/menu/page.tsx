@@ -12,6 +12,7 @@ interface MenuItem {
   price: number;
   spirit_base: string;
   badge: 'new' | 'seasonal' | null;
+  image_url: string;
   sort_order: number;
   is_archived: boolean;
 }
@@ -26,19 +27,19 @@ const categoryLabels: Record<MenuCategory, string> = {
 
 // Demo data
 const demoItems: MenuItem[] = [
-  { id: '1', category: 'house', name: 'The Gatsby', description: 'Gin, lavender, elderflower, champagne float', price: 16, spirit_base: 'Gin', badge: null, sort_order: 0, is_archived: false },
-  { id: '2', category: 'house', name: 'Smoke & Honey', description: 'Mezcal, honey, lemon, smoked rosemary', price: 17, spirit_base: 'Mezcal', badge: 'new', sort_order: 1, is_archived: false },
-  { id: '3', category: 'house', name: 'The Hemingway', description: 'Rum, grapefruit, maraschino, lime', price: 15, spirit_base: 'Rum', badge: null, sort_order: 2, is_archived: false },
-  { id: '4', category: 'house', name: 'Midnight Garden', description: 'Vodka, blackberry, basil, lemon, activated charcoal', price: 16, spirit_base: 'Vodka', badge: null, sort_order: 3, is_archived: false },
-  { id: '5', category: 'house', name: 'The Prohibition', description: 'Bourbon, walnut bitters, demerara, orange', price: 17, spirit_base: 'Bourbon', badge: null, sort_order: 4, is_archived: false },
-  { id: '6', category: 'classics', name: 'Old Fashioned', description: 'Bourbon, Angostura, demerara, orange peel', price: 14, spirit_base: 'Bourbon', badge: null, sort_order: 0, is_archived: false },
-  { id: '7', category: 'classics', name: 'Manhattan', description: 'Rye, sweet vermouth, Angostura, Luxardo cherry', price: 15, spirit_base: 'Rye', badge: null, sort_order: 1, is_archived: false },
-  { id: '8', category: 'classics', name: 'Negroni', description: 'Gin, Campari, sweet vermouth', price: 14, spirit_base: 'Gin', badge: null, sort_order: 2, is_archived: false },
-  { id: '9', category: 'classics', name: 'Daiquiri', description: 'White rum, lime, simple syrup', price: 13, spirit_base: 'Rum', badge: null, sort_order: 3, is_archived: false },
-  { id: '10', category: 'spirit_free', name: 'Garden Party', description: 'Cucumber, elderflower, tonic, lime', price: 10, spirit_base: '', badge: null, sort_order: 0, is_archived: false },
-  { id: '11', category: 'spirit_free', name: 'Sunset Boulevard', description: 'Passionfruit, ginger, soda, citrus', price: 10, spirit_base: '', badge: 'new', sort_order: 1, is_archived: false },
-  { id: '12', category: 'beer_wine', name: 'Cigar City Jai Alai', description: 'IPA · Tampa, FL', price: 8, spirit_base: '', badge: null, sort_order: 0, is_archived: false },
-  { id: '13', category: 'rotating', name: 'Winter Solstice', description: 'Bourbon, cinnamon, apple cider, star anise', price: 16, spirit_base: 'Bourbon', badge: 'seasonal', sort_order: 0, is_archived: false },
+  { id: '1', category: 'house', name: 'The Gatsby', description: 'Gin, lavender, elderflower, champagne float', price: 16, spirit_base: 'Gin', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '2', category: 'house', name: 'Smoke & Honey', description: 'Mezcal, honey, lemon, smoked rosemary', price: 17, spirit_base: 'Mezcal', badge: 'new', image_url: '', sort_order: 1, is_archived: false },
+  { id: '3', category: 'house', name: 'The Hemingway', description: 'Rum, grapefruit, maraschino, lime', price: 15, spirit_base: 'Rum', badge: null, image_url: '', sort_order: 2, is_archived: false },
+  { id: '4', category: 'house', name: 'Midnight Garden', description: 'Vodka, blackberry, basil, lemon, activated charcoal', price: 16, spirit_base: 'Vodka', badge: null, image_url: '', sort_order: 3, is_archived: false },
+  { id: '5', category: 'house', name: 'The Prohibition', description: 'Bourbon, walnut bitters, demerara, orange', price: 17, spirit_base: 'Bourbon', badge: null, image_url: '', sort_order: 4, is_archived: false },
+  { id: '6', category: 'classics', name: 'Old Fashioned', description: 'Bourbon, Angostura, demerara, orange peel', price: 14, spirit_base: 'Bourbon', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '7', category: 'classics', name: 'Manhattan', description: 'Rye, sweet vermouth, Angostura, Luxardo cherry', price: 15, spirit_base: 'Rye', badge: null, image_url: '', sort_order: 1, is_archived: false },
+  { id: '8', category: 'classics', name: 'Negroni', description: 'Gin, Campari, sweet vermouth', price: 14, spirit_base: 'Gin', badge: null, image_url: '', sort_order: 2, is_archived: false },
+  { id: '9', category: 'classics', name: 'Daiquiri', description: 'White rum, lime, simple syrup', price: 13, spirit_base: 'Rum', badge: null, image_url: '', sort_order: 3, is_archived: false },
+  { id: '10', category: 'spirit_free', name: 'Garden Party', description: 'Cucumber, elderflower, tonic, lime', price: 10, spirit_base: '', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '11', category: 'spirit_free', name: 'Sunset Boulevard', description: 'Passionfruit, ginger, soda, citrus', price: 10, spirit_base: '', badge: 'new', image_url: '', sort_order: 1, is_archived: false },
+  { id: '12', category: 'beer_wine', name: 'Cigar City Jai Alai', description: 'IPA · Tampa, FL', price: 8, spirit_base: '', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '13', category: 'rotating', name: 'Winter Solstice', description: 'Bourbon, cinnamon, apple cider, star anise', price: 16, spirit_base: 'Bourbon', badge: 'seasonal', image_url: '', sort_order: 0, is_archived: false },
 ];
 
 const emptyItem: Omit<MenuItem, 'id'> = {
@@ -48,6 +49,7 @@ const emptyItem: Omit<MenuItem, 'id'> = {
   price: 0,
   spirit_base: '',
   badge: null,
+  image_url: '',
   sort_order: 0,
   is_archived: false,
 };
@@ -358,6 +360,18 @@ export default function AdminMenu() {
                     <option value="seasonal">Seasonal</option>
                   </select>
                 </div>
+              </div>
+
+              {/* Image URL */}
+              <div>
+                <label className="block text-xs text-[#888] uppercase tracking-wider mb-1.5">Image URL</label>
+                <input
+                  type="text"
+                  value={formData.image_url}
+                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
+                  className="w-full bg-[#111] border border-[#333] rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#C8A050] transition-colors"
+                  placeholder="/images/drinks/drink-name.jpg"
+                />
               </div>
             </div>
 

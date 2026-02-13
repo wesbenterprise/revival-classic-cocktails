@@ -18,6 +18,7 @@ export interface MenuItem {
   price: number | null;
   spirit_base: string | null;
   badge: 'new' | 'seasonal' | null;
+  image_url: string | null;
   sort_order: number;
   is_archived: boolean;
   created_at: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { Send, CheckCircle, AlertCircle, Upload, X } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, Upload, X, Phone } from 'lucide-react';
 
 // ============================================================
 // Types
@@ -155,6 +155,13 @@ export default function ContactPage() {
         <p className="mt-3 text-revival-cream-dim text-sm tracking-wide">
           Get in touch — we'd love to hear from you.
         </p>
+        <a
+          href="tel:+18636066090"
+          className="inline-flex items-center gap-2 mt-4 text-revival-cream-muted text-sm hover:text-revival-amber transition-colors"
+        >
+          <Phone size={14} />
+          (863) 606-6090
+        </a>
       </section>
 
       {/* Form */}

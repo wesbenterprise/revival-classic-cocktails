@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 const NAV_LINKS = [
   { href: '/', label: 'Tonight' },
@@ -42,6 +42,13 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="tel:+18636066090"
+              className="inline-flex items-center gap-1.5 text-sm tracking-widest uppercase text-revival-cream-muted hover:text-revival-amber transition-colors"
+            >
+              <Phone size={13} />
+              (863) 606-6090
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -90,6 +97,14 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href="tel:+18636066090"
+                className="inline-flex items-center gap-2 text-lg tracking-[0.2em] uppercase text-revival-cream-muted hover:text-revival-cream transition-colors animate-fade-in"
+                style={{ animationDelay: `${NAV_LINKS.length * 60}ms` }}
+              >
+                <Phone size={16} />
+                (863) 606-6090
+              </a>
             </div>
           </div>
         </div>
