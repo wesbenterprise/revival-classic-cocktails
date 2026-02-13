@@ -6,7 +6,8 @@ import StatusBadge from '@/components/StatusBadge';
 import TonightBlock from '@/components/TonightBlock';
 import WeeklyStrip from '@/components/WeeklyStrip';
 import { TonightData, ScheduleRecurring } from '@/types/database';
-import { getTodayDow } from '@/lib/utils';
+import { getTodayDow, isCurrentlyOpen, isClosingSoon, getTodayHoursString } from '@/lib/utils';
+import { HoursConfig } from '@/types/database';
 
 const DEMO_SPECIALS: ScheduleRecurring[] = [
   {
@@ -45,10 +46,21 @@ const DEMO_SPECIALS: ScheduleRecurring[] = [
 
 const GOOGLE_MAPS_URL = 'https://maps.google.com/?q=119+S+Kentucky+Ave+Lakeland+FL+33801';
 
+// Demo hours — replace with Supabase query
+const DEMO_HOURS: HoursConfig = {
+  sunday: { open: null, close: null, is_closed: true },
+  monday: { open: null, close: null, is_closed: true },
+  tuesday: { open: '17:00', close: '00:00', is_closed: false },
+  wednesday: { open: '17:00', close: '00:00', is_closed: false },
+  thursday: { open: '17:00', close: '00:00', is_closed: false },
+  friday: { open: '17:00', close: '02:00', is_closed: false },
+  saturday: { open: '17:00', close: '02:00', is_closed: false },
+};
+
 export default function HomePage() {
-  // TODO: Replace with real data from Supabase
-  const isOpen = true;
-  const todayHours = '5 PM – 12 AM';
+  const isOpen = isCurrentlyOpen(DEMO_HOURS);
+  const closingSoon = isClosingSoon(DEMO_HOURS);
+  const todayHours = getTodayHoursString(DEMO_HOURS);
 
   // Dynamic tonight's special based on current day (EST)
   const today = getTodayDow();
@@ -80,7 +92,7 @@ export default function HomePage() {
           </p>
 
           {/* Status */}
-          <StatusBadge isOpen={isOpen} todayHours={todayHours} />
+          <StatusBadge isOpen={isOpen} closingSoon={closingSoon} todayHours={todayHours} />
           <p className="text-revival-cream-muted text-xs tracking-wide -mt-4">
             119 S Kentucky Ave, Lakeland, FL 33801
           </p>
