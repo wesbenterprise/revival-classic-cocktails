@@ -14,9 +14,23 @@ const DAY_LABELS: Record<DayOfWeek, string> = {
   saturday: 'Saturday',
 };
 
+function toMinutes(time: string): number {
+  const [h, m] = time.split(':').map(Number);
+  return h * 60 + m;
+}
+
+function getNowEST(): Date {
+  return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+}
+
 export function getTodayDow(): DayOfWeek {
-  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-  return DAYS_ORDER[now.getDay()];
+  return DAYS_ORDER[getNowEST().getDay()];
+}
+
+function getYesterdayDow(): DayOfWeek {
+  const now = getNowEST();
+  const d = now.getDay();
+  return DAYS_ORDER[d === 0 ? 6 : d - 1];
 }
 
 export function formatTime12(time24: string): string {
@@ -26,59 +40,118 @@ export function formatTime12(time24: string): string {
   return m === 0 ? `${hour} ${ampm}` : `${hour}:${m.toString().padStart(2, '0')} ${ampm}`;
 }
 
+/**
+ * Checks if the bar is currently open.
+ *
+ * Two cases to check:
+ * 1. Today's evening portion: currentTime >= today's open
+ *    (for midnight-crossing hours, the evening portion is always after open)
+ * 2. Yesterday's overnight tail: yesterday crossed midnight and currentTime < yesterday's close
+ */
 export function isCurrentlyOpen(hours: HoursConfig): boolean {
+  const currentMinutes = (() => {
+    const now = getNowEST();
+    return now.getHours() * 60 + now.getMinutes();
+  })();
+
+  // Check today's hours (evening portion)
   const today = getTodayDow();
-  const todayHours = hours[today];
+  const todayH = hours[today];
+  if (!todayH.is_closed && todayH.open && todayH.close) {
+    const openMin = toMinutes(todayH.open);
+    const closeMin = toMinutes(todayH.close);
 
-  if (todayHours.is_closed || !todayHours.open || !todayHours.close) return false;
-
-  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-  const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-  const [openH, openM] = todayHours.open.split(':').map(Number);
-  const [closeH, closeM] = todayHours.close.split(':').map(Number);
-
-  const openMinutes = openH * 60 + openM;
-  let closeMinutes = closeH * 60 + closeM;
-
-  // Handle closing after midnight (e.g., close at 01:00 = 25:00 effective)
-  if (closeMinutes <= openMinutes) {
-    closeMinutes += 24 * 60;
-    // If we're past midnight but before close, add 24h to current time too
-    if (currentMinutes < openMinutes) {
-      return currentMinutes + 24 * 60 < closeMinutes;
+    if (closeMin > openMin) {
+      // Same-day close (e.g. 9AM-5PM): simple range
+      if (currentMinutes >= openMin && currentMinutes < closeMin) return true;
+    } else {
+      // Midnight-crossing (e.g. 5PM-2AM): evening portion is after open
+      if (currentMinutes >= openMin) return true;
     }
   }
 
-  return currentMinutes >= openMinutes && currentMinutes < closeMinutes;
+  // Check yesterday's hours (overnight tail past midnight)
+  const yesterday = getYesterdayDow();
+  const yH = hours[yesterday];
+  if (!yH.is_closed && yH.open && yH.close) {
+    const openMin = toMinutes(yH.open);
+    const closeMin = toMinutes(yH.close);
+
+    // Only applies if yesterday's hours cross midnight
+    if (closeMin <= openMin && currentMinutes < closeMin) return true;
+  }
+
+  return false;
 }
 
+/**
+ * Returns minutes until the bar closes, or null if not currently open.
+ * Handles both same-day close and midnight-crossing close.
+ */
 export function minutesToClose(hours: HoursConfig): number | null {
+  const currentMinutes = (() => {
+    const now = getNowEST();
+    return now.getHours() * 60 + now.getMinutes();
+  })();
+
+  // Check today's evening portion
   const today = getTodayDow();
-  const todayHours = hours[today];
+  const todayH = hours[today];
+  if (!todayH.is_closed && todayH.open && todayH.close) {
+    const openMin = toMinutes(todayH.open);
+    const closeMin = toMinutes(todayH.close);
 
-  if (todayHours.is_closed || !todayHours.open || !todayHours.close) return null;
-
-  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-  let currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-  const [openH, openM] = todayHours.open.split(':').map(Number);
-  const [closeH, closeM] = todayHours.close.split(':').map(Number);
-
-  const openMinutes = openH * 60 + openM;
-  let closeMinutes = closeH * 60 + closeM;
-
-  // Handle closing after midnight
-  if (closeMinutes <= openMinutes) {
-    closeMinutes += 24 * 60;
-    if (currentMinutes < openMinutes) {
-      currentMinutes += 24 * 60;
+    if (closeMin > openMin) {
+      if (currentMinutes >= openMin && currentMinutes < closeMin) {
+        return closeMin - currentMinutes;
+      }
+    } else {
+      // Midnight-crossing: evening portion, close is tomorrow
+      if (currentMinutes >= openMin) {
+        return (closeMin + 24 * 60) - currentMinutes;
+      }
     }
   }
 
-  // Must be currently open
-  if (currentMinutes < openMinutes || currentMinutes >= closeMinutes) return null;
-  return closeMinutes - currentMinutes;
+  // Check yesterday's overnight tail
+  const yesterday = getYesterdayDow();
+  const yH = hours[yesterday];
+  if (!yH.is_closed && yH.open && yH.close) {
+    const openMin = toMinutes(yH.open);
+    const closeMin = toMinutes(yH.close);
+
+    if (closeMin <= openMin && currentMinutes < closeMin) {
+      return closeMin - currentMinutes;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Returns minutes until today's opening, or null if already open / closed today.
+ * Used for the "Opening Soon" indicator.
+ */
+export function minutesToOpen(hours: HoursConfig): number | null {
+  // If already open, not applicable
+  if (isCurrentlyOpen(hours)) return null;
+
+  const today = getTodayDow();
+  const todayH = hours[today];
+  if (todayH.is_closed || !todayH.open) return null;
+
+  const currentMinutes = (() => {
+    const now = getNowEST();
+    return now.getHours() * 60 + now.getMinutes();
+  })();
+
+  const openMin = toMinutes(todayH.open);
+
+  if (currentMinutes < openMin) {
+    return openMin - currentMinutes;
+  }
+
+  return null;
 }
 
 export function getTodayHoursString(hours: HoursConfig): string {
