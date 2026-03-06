@@ -1,35 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-
-type TeamStatus = 'active' | 'alumni';
-
-interface TeamMember {
-  id: string;
-  name: string;
-  title: string;
-  bio: string;
-  photo_url: string | null;
-  status: TeamStatus;
-  sort_order: number;
-}
-
-const demoTeam: TeamMember[] = [
-  { id: '1', name: 'Ryan Lopez', title: 'Owner & General Manager', bio: 'The vision behind Revival.', photo_url: null, status: 'active', sort_order: 0 },
-  { id: '2', name: 'Katie Monroe', title: 'Lead Bartender', bio: 'Competition-winning cocktail artist.', photo_url: null, status: 'active', sort_order: 1 },
-  { id: '3', name: 'Jordane Ellis', title: 'Bartender', bio: 'Classic cocktail purist with a modern edge.', photo_url: null, status: 'active', sort_order: 2 },
-  { id: '4', name: 'Brian Costa', title: 'Bartender', bio: 'Brings the energy every night.', photo_url: null, status: 'active', sort_order: 3 },
-  { id: '5', name: 'Alec Thornton', title: 'Former Lead Bartender', bio: 'Original Revival crew.', photo_url: null, status: 'alumni', sort_order: 0 },
-  { id: '6', name: 'Jordan Blake', title: 'Former Bartender', bio: '', photo_url: null, status: 'alumni', sort_order: 1 },
-  { id: '7', name: 'Josh Navarro', title: 'Former Barback', bio: '', photo_url: null, status: 'alumni', sort_order: 2 },
-];
+import { TEAM_DATA, TeamMemberData } from '@/lib/teamData';
 
 export default function AdminTeam() {
-  const [team, setTeam] = useState(demoTeam);
+  const [team, setTeam] = useState<TeamMemberData[]>(TEAM_DATA);
   const [showModal, setShowModal] = useState(false);
-  const [editing, setEditing] = useState<TeamMember | null>(null);
-  const [filter, setFilter] = useState<TeamStatus>('active');
-  const [form, setForm] = useState({ name: '', title: '', bio: '', status: 'active' as TeamStatus });
+  const [editing, setEditing] = useState<TeamMemberData | null>(null);
+  const [filter, setFilter] = useState<'active' | 'alumni'>('active');
+  const [form, setForm] = useState({ name: '', title: '', bio: '', status: 'active' as 'active' | 'alumni' });
 
   const filtered = team.filter((m) => m.status === filter).sort((a, b) => a.sort_order - b.sort_order);
 
@@ -39,7 +18,7 @@ export default function AdminTeam() {
     setShowModal(true);
   };
 
-  const openEdit = (member: TeamMember) => {
+  const openEdit = (member: TeamMemberData) => {
     setEditing(member);
     setForm({ name: member.name, title: member.title, bio: member.bio, status: member.status });
     setShowModal(true);
@@ -75,7 +54,12 @@ export default function AdminTeam() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-semibold text-white">Team</h1>
-          <p className="text-sm text-[#888] mt-1">{team.filter((m) => m.status === 'active').length} active · {team.filter((m) => m.status === 'alumni').length} alumni</p>
+          <p className="text-sm text-[#888] mt-1">
+            {team.filter((m) => m.status === 'active').length} active · {team.filter((m) => m.status === 'alumni').length} alumni
+          </p>
+          <p className="text-xs text-[#555] mt-1">
+            Source: <code className="text-[#666]">src/lib/teamData.ts</code> — edit there to persist changes
+          </p>
         </div>
         <button onClick={openCreate} className="bg-[#C8A050] text-[#0A0A0A] px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#D4B068]">
           + Add Member
@@ -100,15 +84,20 @@ export default function AdminTeam() {
               </button>
             </div>
 
-            {/* Avatar placeholder */}
-            <div className="w-12 h-12 rounded-full bg-[#222] border border-[#333] flex items-center justify-center shrink-0">
-              <span className="text-lg text-[#555]">{member.name.charAt(0)}</span>
+            {/* Avatar */}
+            <div className="w-12 h-12 rounded-full bg-[#222] border border-[#333] flex items-center justify-center shrink-0 overflow-hidden">
+              {member.photo_url ? (
+                <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-lg text-[#555]">{member.name.charAt(0)}</span>
+              )}
             </div>
 
             <div className="flex-1 min-w-0">
               <p className="text-white font-medium">{member.name}</p>
               <p className="text-sm text-[#888]">{member.title}</p>
               {member.bio && <p className="text-xs text-[#555] mt-0.5">{member.bio}</p>}
+              {member.photo_url && <p className="text-xs text-green-500/60 mt-0.5">📷 Has photo</p>}
             </div>
 
             <div className="flex items-center gap-1 shrink-0">
@@ -139,13 +128,6 @@ export default function AdminTeam() {
               </button>
             </div>
             <div className="p-5 space-y-4">
-              {/* Photo upload placeholder */}
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-[#222] border border-[#333] flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#555]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" /></svg>
-                </div>
-                <button className="text-sm text-[#C8A050] hover:underline">Upload Photo</button>
-              </div>
               <div>
                 <label className="block text-xs text-[#888] uppercase tracking-wider mb-1.5">Name</label>
                 <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -154,12 +136,12 @@ export default function AdminTeam() {
               <div>
                 <label className="block text-xs text-[#888] uppercase tracking-wider mb-1.5">Title / Role</label>
                 <input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })}
-                  className="w-full bg-[#111] border border-[#333] rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#C8A050]" placeholder="Lead Bartender" />
+                  className="w-full bg-[#111] border border-[#333] rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#C8A050]" placeholder="Bartender" />
               </div>
               <div>
                 <label className="block text-xs text-[#888] uppercase tracking-wider mb-1.5">Bio (optional)</label>
-                <input type="text" value={form.bio} onChange={(e) => setForm({ ...form, bio: e.target.value })}
-                  className="w-full bg-[#111] border border-[#333] rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#C8A050]" placeholder="One sentence about them" />
+                <textarea value={form.bio} onChange={(e) => setForm({ ...form, bio: e.target.value })}
+                  className="w-full bg-[#111] border border-[#333] rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#C8A050] min-h-[80px]" placeholder="One or two sentences about them" />
               </div>
               <div>
                 <label className="block text-xs text-[#888] uppercase tracking-wider mb-1.5">Status</label>

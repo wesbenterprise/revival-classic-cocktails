@@ -1,72 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { TeamMember } from '@/types/database';
+import { TEAM_DATA, TeamMemberData } from '@/lib/teamData';
 
 export const metadata: Metadata = {
   title: 'The Team | Revival Craft Cocktails — Lakeland',
   description:
     'Meet the bartenders and team behind Revival Craft Cocktails in downtown Lakeland, Florida.',
 };
-
-// ============================================================
-// TEAM DATA — from revivallakeland.com/home/about/
-// ============================================================
-const ACTIVE_TEAM: TeamMember[] = [
-  {
-    id: '1', name: 'Ryan Lopez', title: 'Owner',
-    bio: 'Carrying forward the vision Jeannie built, one pour at a time.',
-    photo_url: '/images/team/ryan.jpg', status: 'active', sort_order: 0,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '2', name: 'Katie', title: 'Lead Bartender',
-    bio: 'One of the longest-tenured members of the Revival family. Master of classics, lover of experimentation. Also skeet shoots.',
-    photo_url: '/images/team/katie.jpg', status: 'active', sort_order: 1,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '3', name: 'Jordane', title: 'Bartender',
-    bio: 'Brings innovative qualities to every cocktail. Specializes in spiced spirits and bold recipes. With her bubbly attitude, cocktails are only exceeded by conversation.',
-    photo_url: '/images/team/jordane.jpg', status: 'active', sort_order: 2,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '4', name: 'Brian', title: 'Operations',
-    bio: 'Behind-the-scenes guru with a background in guest relations from The Walt Disney World Company. Like Santa Claus — you never see him, but you know he visited.',
-    photo_url: null, status: 'active', sort_order: 3,
-    created_at: '', updated_at: '',
-  },
-];
-
-const ALUMNI: TeamMember[] = [
-  {
-    id: '10', name: 'Jeannie', title: 'Founder & Master Mixologist',
-    bio: null, photo_url: '/images/team/jeannie.jpg', status: 'alumni', sort_order: 0,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '11', name: 'Alec', title: 'Bartender',
-    bio: null, photo_url: '/images/team/alec.jpg', status: 'alumni', sort_order: 1,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '12', name: 'Wilges', title: 'Bartender',
-    bio: null, photo_url: '/images/team/wilges.jpg', status: 'alumni', sort_order: 2,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '13', name: 'Jordan', title: 'Bartender',
-    bio: null, photo_url: null, status: 'alumni', sort_order: 3,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '14', name: 'Josh', title: 'Bartender',
-    bio: null, photo_url: null, status: 'alumni', sort_order: 4,
-    created_at: '', updated_at: '',
-  },
-];
-
-// ============================================================
 
 function getInitials(name: string): string {
   return name
@@ -77,7 +17,7 @@ function getInitials(name: string): string {
     .slice(0, 2);
 }
 
-function TeamCard({ member, size = 'large' }: { member: TeamMember; size?: 'large' | 'small' }) {
+function TeamCard({ member, size = 'large' }: { member: TeamMemberData; size?: 'large' | 'small' }) {
   const isLarge = size === 'large';
 
   return (
@@ -123,8 +63,8 @@ function TeamCard({ member, size = 'large' }: { member: TeamMember; size?: 'larg
 }
 
 export default function TeamPage() {
-  const active = ACTIVE_TEAM.sort((a, b) => a.sort_order - b.sort_order);
-  const alumni = ALUMNI.sort((a, b) => a.sort_order - b.sort_order);
+  const active = TEAM_DATA.filter(m => m.status === 'active').sort((a, b) => a.sort_order - b.sort_order);
+  const alumni = TEAM_DATA.filter(m => m.status === 'alumni').sort((a, b) => a.sort_order - b.sort_order);
 
   return (
     <div className="min-h-screen">
@@ -140,7 +80,7 @@ export default function TeamPage() {
           THE TEAM (top of page)
           ============================ */}
       <section className="max-w-5xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
           {active.map((member) => (
             <TeamCard key={member.id} member={member} />
           ))}
@@ -285,7 +225,7 @@ export default function TeamPage() {
           <p className="text-center text-revival-cream-dim text-sm mb-10 max-w-md mx-auto">
             Friends of the bar who helped shape what Revival is today. Once Revival family, always Revival family.
           </p>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-6 max-w-lg mx-auto">
             {alumni.map((member) => (
               <TeamCard key={member.id} member={member} size="small" />
             ))}
