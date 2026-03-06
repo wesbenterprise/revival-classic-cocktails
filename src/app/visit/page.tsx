@@ -150,6 +150,18 @@ export default function VisitPage() {
             </div>
           </div>
         </div>
+
+        {/* Desiderata quote */}
+        <div className="mt-16 max-w-2xl mx-auto">
+          <blockquote className="border-l-2 border-revival-amber/50 pl-6 py-2">
+            <p className="font-display text-xl text-revival-cream italic leading-relaxed">
+              &ldquo;Go placidly amid the noise and the haste, and remember what peace there may be in silence.&rdquo;
+            </p>
+            <cite className="block mt-3 text-revival-cream-dim text-sm not-italic">
+              — Max Ehrmann, <span className="italic">Desiderata</span>
+            </cite>
+          </blockquote>
+        </div>
       </div>
     </div>
   );
