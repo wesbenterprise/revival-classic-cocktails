@@ -112,12 +112,15 @@ export default async function TeamPage() {
           <h2 className="font-display text-3xl md:text-4xl text-revival-cream">
             Jeannie Weaver Lopez
           </h2>
-          <p className="mt-2 text-revival-cream-dim text-sm">
+          <p className="mt-2 text-revival-amber-dim text-xs tracking-[0.2em] uppercase">
+            Master Mixologist
+          </p>
+          <p className="mt-1 text-revival-cream-dim text-sm">
             1985 – 2024
           </p>
           <div className="mt-6 w-12 h-px bg-revival-amber/50 mx-auto" />
-          <p className="mt-6 text-revival-cream-muted leading-relaxed max-w-lg mx-auto italic">
-            Though she is no longer with us, her legacy lives on in every pour, every recipe, and every bartender who works under her eternal gaze and guidance.
+          <p className="mt-6 text-revival-cream-muted leading-relaxed max-w-lg mx-auto">
+            A detail-obsessed creative force, Jeannie&apos;s passion and talent shaped every corner of our bar and the spirit of our business. She was constantly experimenting with new liquors and ingredients, redefining what a cocktail could be and setting the standard for Lakeland&apos;s cocktail scene to this day.
           </p>
           <p className="mt-4 text-revival-cream-muted leading-relaxed max-w-lg mx-auto italic">
             We raise a glass in her honor.
