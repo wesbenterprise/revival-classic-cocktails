@@ -84,15 +84,15 @@ export default async function TeamPage() {
           THE TEAM (top of page)
           ============================ */}
       <section className="max-w-5xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 lg:gap-10">
           {active.map((member) => (
             <TeamCard key={member.id} member={member} />
           ))}
         </div>
 
         {/* Desiderata quote */}
-        <blockquote className="max-w-xl mx-auto mt-12 border-l-2 border-revival-amber/50 pl-6 py-2">
-          <p className="font-display text-xl text-revival-cream italic leading-relaxed">
+        <blockquote className="max-w-xl mx-auto mt-10 border-l-2 border-revival-amber/50 pl-4 md:pl-6 py-2">
+          <p className="font-display text-base md:text-xl text-revival-cream italic leading-relaxed">
             &ldquo;Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.&rdquo;
           </p>
           <cite className="block mt-3 text-revival-cream-dim text-sm not-italic">
