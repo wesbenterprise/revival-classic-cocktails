@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { MapPin, Clock, Car, Users, Navigation, Phone } from 'lucide-react';
 import { DayOfWeek } from '@/types/database';
 import { formatTime12, getDayLabel, getTodayDow } from '@/lib/utils';
-import { SITE_HOURS, SITE_ADDRESS } from '@/lib/siteConfig';
+import { SITE_ADDRESS } from '@/lib/siteConfig';
+import { fetchHours } from '@/lib/db';
 
 // Monday-first order for display
 const DISPLAY_DAYS: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
@@ -13,7 +14,10 @@ const WALK_IN_POLICY = "Seating is first come, first serve. Just walk in.";
 
 const NEIGHBORHOOD = 'In the heart of downtown Lakeland, just off Munn Park.';
 
-export default function VisitPage() {
+export const revalidate = 60;
+
+export default async function VisitPage() {
+  const SITE_HOURS = await fetchHours();
   const today = getTodayDow();
 
   return (

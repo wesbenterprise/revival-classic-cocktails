@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { TEAM_DATA, TeamMemberData } from '@/lib/teamData';
+import { TeamMemberData } from '@/lib/teamData';
+import { fetchTeamMembers } from '@/lib/db';
 
 export const metadata: Metadata = {
   title: 'The Team | Revival Craft Cocktails — Lakeland',
@@ -26,7 +27,7 @@ function TeamCard({ member, size = 'large' }: { member: TeamMemberData; size?: '
         className={`
           mx-auto rounded-lg overflow-hidden bg-revival-dark border border-revival-border/50
           group-hover:border-revival-amber/30 transition-all duration-300
-          ${isLarge ? 'w-48 h-56 md:w-56 md:h-64' : 'w-32 h-36 md:w-40 md:h-44'}
+          ${isLarge ? 'w-full aspect-[4/5] md:w-56 md:h-64' : 'w-full aspect-[4/5] md:w-40 md:h-44'}
         `}
       >
         {member.photo_url ? (
@@ -62,9 +63,12 @@ function TeamCard({ member, size = 'large' }: { member: TeamMemberData; size?: '
   );
 }
 
-export default function TeamPage() {
-  const active = TEAM_DATA.filter(m => m.status === 'active').sort((a, b) => a.sort_order - b.sort_order);
-  const alumni = TEAM_DATA.filter(m => m.status === 'alumni').sort((a, b) => a.sort_order - b.sort_order);
+export const revalidate = 60;
+
+export default async function TeamPage() {
+  const teamData = await fetchTeamMembers();
+  const active = teamData.filter((m: TeamMemberData) => m.status === 'active').sort((a: TeamMemberData, b: TeamMemberData) => a.sort_order - b.sort_order);
+  const alumni = teamData.filter((m: TeamMemberData) => m.status === 'alumni').sort((a: TeamMemberData, b: TeamMemberData) => a.sort_order - b.sort_order);
 
   return (
     <div className="min-h-screen">

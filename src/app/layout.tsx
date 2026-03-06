@@ -63,7 +63,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col overflow-x-hidden">
         {/* Moody lounge atmosphere backdrop — swap inner divs with <img src="/images/lounge-bg.jpg" className="w-full h-full object-cover" /> when ready */}
         <div className="fixed inset-0 -z-10" aria-hidden="true">
           <div className="absolute inset-0 bg-revival-black" />

@@ -1,14 +1,24 @@
 'use client';
 
-import { useState } from 'react';
-import { TEAM_DATA, TeamMemberData } from '@/lib/teamData';
+import { useState, useEffect, useCallback } from 'react';
+import { TeamMemberData } from '@/lib/teamData';
 
 export default function AdminTeam() {
-  const [team, setTeam] = useState<TeamMemberData[]>(TEAM_DATA);
+  const [team, setTeam] = useState<TeamMemberData[]>([]);
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editing, setEditing] = useState<TeamMemberData | null>(null);
   const [filter, setFilter] = useState<'active' | 'alumni'>('active');
   const [form, setForm] = useState({ name: '', title: '', bio: '', status: 'active' as 'active' | 'alumni' });
+  const [saving, setSaving] = useState(false);
+
+  const loadTeam = useCallback(async () => {
+    const res = await fetch('/api/revival/team');
+    if (res.ok) setTeam(await res.json());
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { loadTeam(); }, [loadTeam]);
 
   const filtered = team.filter((m) => m.status === filter).sort((a, b) => a.sort_order - b.sort_order);
 
@@ -24,30 +34,51 @@ export default function AdminTeam() {
     setShowModal(true);
   };
 
-  const save = () => {
+  const save = async () => {
     if (!form.name.trim()) return;
+    setSaving(true);
     if (editing) {
-      setTeam((prev) => prev.map((m) => m.id === editing.id ? { ...m, ...form } : m));
+      await fetch('/api/revival/team', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: editing.id, ...form }),
+      });
     } else {
-      setTeam((prev) => [...prev, { id: Date.now().toString(), ...form, photo_url: null, sort_order: filtered.length }]);
+      await fetch('/api/revival/team', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, sort_order: filtered.length }),
+      });
     }
+    setSaving(false);
     setShowModal(false);
+    loadTeam();
   };
 
-  const remove = (id: string) => {
-    if (confirm('Remove this team member?')) setTeam((prev) => prev.filter((m) => m.id !== id));
+  const remove = async (id: string) => {
+    if (!confirm('Remove this team member?')) return;
+    await fetch('/api/revival/team', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+    loadTeam();
   };
 
-  const move = (id: string, dir: 'up' | 'down') => {
+  const move = async (id: string, dir: 'up' | 'down') => {
     const idx = filtered.findIndex((m) => m.id === id);
     if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === filtered.length - 1)) return;
     const swapIdx = dir === 'up' ? idx - 1 : idx + 1;
-    setTeam((prev) => prev.map((m) => {
-      if (m.id === filtered[idx].id) return { ...m, sort_order: filtered[swapIdx].sort_order };
-      if (m.id === filtered[swapIdx].id) return { ...m, sort_order: filtered[idx].sort_order };
-      return m;
-    }));
+    const a = filtered[idx];
+    const b = filtered[swapIdx];
+    await Promise.all([
+      fetch('/api/revival/team', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: a.id, sort_order: b.sort_order }) }),
+      fetch('/api/revival/team', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: b.id, sort_order: a.sort_order }) }),
+    ]);
+    loadTeam();
   };
+
+  if (loading) return <div className="p-8 text-center text-[#888]">Loading team…</div>;
 
   return (
     <div className="p-4 lg:p-8 max-w-4xl mx-auto">
@@ -58,7 +89,7 @@ export default function AdminTeam() {
             {team.filter((m) => m.status === 'active').length} active · {team.filter((m) => m.status === 'alumni').length} alumni
           </p>
           <p className="text-xs text-[#555] mt-1">
-            Source: <code className="text-[#666]">src/lib/teamData.ts</code> — edit there to persist changes
+            Managed via Supabase — changes persist automatically
           </p>
         </div>
         <button onClick={openCreate} className="bg-[#C8A050] text-[#0A0A0A] px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#D4B068]">
@@ -74,7 +105,6 @@ export default function AdminTeam() {
       <div className="space-y-2">
         {filtered.map((member, idx) => (
           <div key={member.id} className="bg-[#1A1A1A] border border-[#222] rounded-xl p-4 flex items-center gap-4 group">
-            {/* Reorder */}
             <div className="flex flex-col gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
               <button onClick={() => move(member.id, 'up')} disabled={idx === 0} className="text-[#555] hover:text-white disabled:opacity-20">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>
@@ -84,7 +114,6 @@ export default function AdminTeam() {
               </button>
             </div>
 
-            {/* Avatar */}
             <div className="w-12 h-12 rounded-full bg-[#222] border border-[#333] flex items-center justify-center shrink-0 overflow-hidden">
               {member.photo_url ? (
                 <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover" />
@@ -116,7 +145,6 @@ export default function AdminTeam() {
         ))}
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-end lg:items-center justify-center">
           <div className="absolute inset-0 bg-black/60" onClick={() => setShowModal(false)} />
@@ -155,8 +183,8 @@ export default function AdminTeam() {
             </div>
             <div className="sticky bottom-0 bg-[#1A1A1A] px-5 py-4 border-t border-[#222] flex gap-3">
               <button onClick={() => setShowModal(false)} className="flex-1 px-4 py-2.5 rounded-lg text-sm text-[#888] border border-[#333]">Cancel</button>
-              <button onClick={save} disabled={!form.name.trim()} className="flex-1 bg-[#C8A050] text-[#0A0A0A] px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#D4B068] disabled:opacity-40">
-                {editing ? 'Save' : 'Add Member'}
+              <button onClick={save} disabled={!form.name.trim() || saving} className="flex-1 bg-[#C8A050] text-[#0A0A0A] px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#D4B068] disabled:opacity-40">
+                {saving ? 'Saving…' : editing ? 'Save' : 'Add Member'}
               </button>
             </div>
           </div>
