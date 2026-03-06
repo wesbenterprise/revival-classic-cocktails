@@ -48,6 +48,10 @@ export default function DrinkItem({ item }: { item: MenuItem }) {
                 flex-none text-[10px] tracking-[0.15em] uppercase px-2 py-0.5 rounded-full
                 ${item.badge === 'new'
                   ? 'bg-revival-amber/20 text-revival-amber'
+                  : item.badge === 'premium'
+                  ? 'bg-revival-red/20 text-revival-red'
+                  : item.badge === 'revised'
+                  ? 'bg-revival-amber/10 text-revival-amber-dim'
                   : 'bg-revival-muted text-revival-cream-muted'
                 }
               `}>

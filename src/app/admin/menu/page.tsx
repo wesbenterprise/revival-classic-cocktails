@@ -2,7 +2,20 @@
 
 import { useState } from 'react';
 
-type MenuCategory = 'house' | 'classics' | 'spirit_free' | 'beer_wine' | 'rotating';
+type MenuCategory =
+  | 'old_fashioneds'
+  | 'seasonal'
+  | 'classics'
+  | 'tiki'
+  | 'spritz'
+  | 'happy_hour_6'
+  | 'happy_hour_8'
+  | 'mocktails'
+  | 'spirit_flights'
+  | 'wine'
+  | 'draft_beer'
+  | 'bottles_cans'
+  | 'non_alcoholic';
 
 interface MenuItem {
   id: string;
@@ -11,39 +24,44 @@ interface MenuItem {
   description: string;
   price: number;
   spirit_base: string;
-  badge: 'new' | 'seasonal' | null;
+  badge: 'new' | 'seasonal' | 'revised' | 'premium' | null;
   image_url: string;
   sort_order: number;
   is_archived: boolean;
 }
 
 const categoryLabels: Record<MenuCategory, string> = {
-  house: 'House Originals',
+  old_fashioneds: 'Old Fashioneds',
+  seasonal: 'Seasonal',
   classics: 'Classics',
-  spirit_free: 'Spirit Free',
-  beer_wine: 'Beer & Wine',
-  rotating: 'Rotating',
+  tiki: 'Tiki',
+  spritz: 'Spritz',
+  happy_hour_6: 'Happy Hour $6',
+  happy_hour_8: 'Happy Hour $8',
+  mocktails: 'Mocktails',
+  spirit_flights: 'Spirit Flights',
+  wine: 'Wine',
+  draft_beer: 'Draft Beer',
+  bottles_cans: 'Bottles & Cans',
+  non_alcoholic: 'Non-Alcoholic',
 };
 
-// Demo data
+// Demo data — sample items across new categories
 const demoItems: MenuItem[] = [
-  { id: '1', category: 'house', name: 'The Gatsby', description: 'Gin, lavender, elderflower, champagne float', price: 16, spirit_base: 'Gin', badge: null, image_url: '', sort_order: 0, is_archived: false },
-  { id: '2', category: 'house', name: 'Smoke & Honey', description: 'Mezcal, honey, lemon, smoked rosemary', price: 17, spirit_base: 'Mezcal', badge: 'new', image_url: '', sort_order: 1, is_archived: false },
-  { id: '3', category: 'house', name: 'The Hemingway', description: 'Rum, grapefruit, maraschino, lime', price: 15, spirit_base: 'Rum', badge: null, image_url: '', sort_order: 2, is_archived: false },
-  { id: '4', category: 'house', name: 'Midnight Garden', description: 'Vodka, blackberry, basil, lemon, activated charcoal', price: 16, spirit_base: 'Vodka', badge: null, image_url: '', sort_order: 3, is_archived: false },
-  { id: '5', category: 'house', name: 'The Prohibition', description: 'Bourbon, walnut bitters, demerara, orange', price: 17, spirit_base: 'Bourbon', badge: null, image_url: '', sort_order: 4, is_archived: false },
-  { id: '6', category: 'classics', name: 'Old Fashioned', description: 'Bourbon, Angostura, demerara, orange peel', price: 14, spirit_base: 'Bourbon', badge: null, image_url: '', sort_order: 0, is_archived: false },
-  { id: '7', category: 'classics', name: 'Manhattan', description: 'Rye, sweet vermouth, Angostura, Luxardo cherry', price: 15, spirit_base: 'Rye', badge: null, image_url: '', sort_order: 1, is_archived: false },
-  { id: '8', category: 'classics', name: 'Negroni', description: 'Gin, Campari, sweet vermouth', price: 14, spirit_base: 'Gin', badge: null, image_url: '', sort_order: 2, is_archived: false },
-  { id: '9', category: 'classics', name: 'Daiquiri', description: 'White rum, lime, simple syrup', price: 13, spirit_base: 'Rum', badge: null, image_url: '', sort_order: 3, is_archived: false },
-  { id: '10', category: 'spirit_free', name: 'Garden Party', description: 'Cucumber, elderflower, tonic, lime', price: 10, spirit_base: '', badge: null, image_url: '', sort_order: 0, is_archived: false },
-  { id: '11', category: 'spirit_free', name: 'Sunset Boulevard', description: 'Passionfruit, ginger, soda, citrus', price: 10, spirit_base: '', badge: 'new', image_url: '', sort_order: 1, is_archived: false },
-  { id: '12', category: 'beer_wine', name: 'Cigar City Jai Alai', description: 'IPA · Tampa, FL', price: 8, spirit_base: '', badge: null, image_url: '', sort_order: 0, is_archived: false },
-  { id: '13', category: 'rotating', name: 'Winter Solstice', description: 'Bourbon, cinnamon, apple cider, star anise', price: 16, spirit_base: 'Bourbon', badge: 'seasonal', image_url: '', sort_order: 0, is_archived: false },
+  { id: '1', category: 'old_fashioneds', name: 'Bourbon Old Fashioned', description: 'Elijah Craig Small Batch, Revival Syrup, Angostura, Orange Bitters', price: 13, spirit_base: 'Bourbon', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '2', category: 'old_fashioneds', name: 'Rye Old Fashioned', description: 'Basil Hayden Dark Rye, Revival Syrup, Angostura, Orange Bitters', price: 13, spirit_base: 'Rye', badge: null, image_url: '', sort_order: 1, is_archived: false },
+  { id: '3', category: 'classics', name: 'Faux-Spresso Martini', description: "Wheatley Vodka, Borghetti Espresso Liqueur, Cold Brew, Bustelo Syrup", price: 13, spirit_base: 'Vodka', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '4', category: 'seasonal', name: "Lover's Lane", description: "Ford's Gin, Hibiscus Syrup, Lemon Juice, Rose Water, Egg White", price: 12, spirit_base: 'Gin', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '5', category: 'tiki', name: 'Shark Attack', description: 'Vodka, Pomegranate Liqueur, Tropical Amaro, OJ, Hibiscus, Lime, Orgeat', price: 13, spirit_base: 'Vodka', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '6', category: 'happy_hour_6', name: 'Paloma', description: 'Corazon Tequila, Lime, Grapefruit, Chili-Lime Salt Rim', price: 6, spirit_base: 'Tequila', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '7', category: 'happy_hour_8', name: 'Old Fashioned', description: 'Old Forester Bourbon, Revival Syrup, Angostura & Orange Bitters', price: 8, spirit_base: 'Bourbon', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '8', category: 'mocktails', name: 'Lavender Spritz', description: 'Housemade Lavender Lemonade, Soda Water', price: 5, spirit_base: '', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '9', category: 'wine', name: 'Zardetto Prosecco', description: 'Orange rind, brioche, honeyed grapefruit', price: 8, spirit_base: '', badge: null, image_url: '', sort_order: 0, is_archived: false },
+  { id: '10', category: 'draft_beer', name: 'Bud Light', description: '', price: 3, spirit_base: '', badge: null, image_url: '', sort_order: 0, is_archived: false },
 ];
 
 const emptyItem: Omit<MenuItem, 'id'> = {
-  category: 'house',
+  category: 'old_fashioneds',
   name: '',
   description: '',
   price: 0,
@@ -56,7 +74,7 @@ const emptyItem: Omit<MenuItem, 'id'> = {
 
 export default function AdminMenu() {
   const [items, setItems] = useState<MenuItem[]>(demoItems);
-  const [activeCategory, setActiveCategory] = useState<MenuCategory>('house');
+  const [activeCategory, setActiveCategory] = useState<MenuCategory>('old_fashioneds');
   const [showArchived, setShowArchived] = useState(false);
   const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
   const [isCreating, setIsCreating] = useState(false);
@@ -358,6 +376,8 @@ export default function AdminMenu() {
                     <option value="">None</option>
                     <option value="new">New</option>
                     <option value="seasonal">Seasonal</option>
+                    <option value="revised">Revised</option>
+                    <option value="premium">Premium</option>
                   </select>
                 </div>
               </div>

@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Jeannie Weaver Lopez | Revival Craft Cocktails',
+  title: 'Our Story | Jeannie Weaver & Revival Craft Cocktails',
   description:
-    'Remembering Jeannie Weaver Lopez, the founder of Revival Craft Cocktails in Lakeland, Florida. Her spirit lives on in every pour.',
+    'Founded by Jeannie Weaver to revive mid-century cocktail culture in downtown Lakeland. Learn the story behind the bar.',
   openGraph: {
-    title: 'Jeannie Weaver Lopez — Founder of Revival',
+    title: 'Jeannie Weaver Lopez \u2014 Founder of Revival',
     description: 'Her spirit lives on in every pour.',
   },
 };
