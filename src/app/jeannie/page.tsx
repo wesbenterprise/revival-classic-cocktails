@@ -33,12 +33,9 @@ export default function JeanniePage() {
 
       {/* Content */}
       <section className="max-w-2xl mx-auto px-6 pb-24">
-        {/* Photo placeholder */}
-        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-revival-dark border border-revival-border/50 mb-12 flex items-center justify-center">
-          <div className="text-center">
-            <span className="font-display text-5xl text-revival-cream-dim">JWL</span>
-            <p className="mt-2 text-revival-cream-dim text-xs tracking-wide">Photo</p>
-          </div>
+        {/* Jeannie portrait */}
+        <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-revival-dark border border-revival-border/50 mb-12">
+          <img src="/images/jeannie-portrait.jpg" alt="Jeannie Weaver Lopez" className="w-full h-full object-cover" />
         </div>
 
         {/* Story */}
