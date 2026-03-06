@@ -1,0 +1,1041 @@
+{
+  "categories": [
+    {
+      "id": "old_fashioneds",
+      "label": "Old Fashioneds",
+      "subtitle": "Our signature program. 15 ways to start the night.",
+      "sort_order": 0
+    },
+    {
+      "id": "seasonal",
+      "label": "Seasonal Offerings",
+      "subtitle": "Limited runs. Crafted for the moment.",
+      "sort_order": 1
+    },
+    {
+      "id": "classics",
+      "label": "Classics",
+      "subtitle": "Timeless cocktails, Revival style.",
+      "sort_order": 2
+    },
+    {
+      "id": "tiki",
+      "label": "Tiki",
+      "subtitle": "All Tiki drinks can be served sharable for $40. Best for groups of 3.",
+      "sort_order": 3
+    },
+    {
+      "id": "spritz",
+      "label": "Spritz",
+      "subtitle": "Light, bright, and built for the Florida sun.",
+      "sort_order": 4
+    },
+    {
+      "id": "happy_hour_6",
+      "label": "Happy Hour — $6 Favorites",
+      "subtitle": "Monday–Friday, 1 PM – 7 PM.",
+      "sort_order": 5
+    },
+    {
+      "id": "happy_hour_8",
+      "label": "Happy Hour — $8 Revival Favorites",
+      "subtitle": "Monday–Friday, 1 PM – 7 PM.",
+      "sort_order": 6
+    },
+    {
+      "id": "mocktails",
+      "label": "Mocktails",
+      "subtitle": "All the craft, none of the proof.",
+      "sort_order": 7
+    },
+    {
+      "id": "spirit_flights",
+      "label": "Spirit Flights",
+      "subtitle": "Four ¾ oz pours of your chosen spirit.",
+      "sort_order": 8
+    },
+    {
+      "id": "wine",
+      "label": "Wine",
+      "subtitle": "A curated selection by the glass.",
+      "sort_order": 9
+    },
+    {
+      "id": "draft_beer",
+      "label": "Draft Beer",
+      "subtitle": "On tap.",
+      "sort_order": 10
+    },
+    {
+      "id": "bottles_cans",
+      "label": "Bottles & Cans",
+      "subtitle": "From the cooler.",
+      "sort_order": 11
+    },
+    {
+      "id": "non_alcoholic",
+      "label": "Non-Alcoholic",
+      "subtitle": "For the designated drivers and the sober-curious.",
+      "sort_order": 12
+    }
+  ],
+  "menu_items": [
+    {
+      "category": "old_fashioneds",
+      "name": "Bourbon Old Fashioned",
+      "description": "Elijah Craig Small Batch Bourbon, Revival Syrup, Angostura Bitters, Orange Bitters",
+      "price": 13,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Rye Old Fashioned",
+      "description": "Basil Hayden Dark Rye, Revival Syrup, Angostura Bitters, Orange Bitters",
+      "price": 13,
+      "spirit_base": "rye",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Gin Old Fashioned",
+      "description": "Waterloo Antique Gin, Cinnamon Syrup, Spiced Apple Bitters",
+      "price": 13,
+      "spirit_base": "gin",
+      "badge": "revised",
+      "sort_order": 2
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Rum Old Fashioned (Fat-Washed)",
+      "description": "Diplomatico Mantuano Brown Butter Infused Rum, Giffard Banane du Bresil, Black Walnut Bitters",
+      "price": 13,
+      "spirit_base": "rum",
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Tequila Old Fashioned",
+      "description": "Milagro Select Barrel Reserve Reposado Tequila, Citrus Syrup, Grapefruit Bitters",
+      "price": 13,
+      "spirit_base": "tequila",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Mezcal Old Fashioned",
+      "description": "Del Maguey Vida Mezcal, Espolon Reposado Tequila, Tangerine-Orange Syrup, Mole Bitters",
+      "price": 13,
+      "spirit_base": "mezcal",
+      "badge": "revised",
+      "sort_order": 5
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Duck Fat Old Fashioned (Fat-Washed)",
+      "description": "Duck Fat Infused Elijah Craig Small Batch, Honey-Ginger Syrup, Plum Bitters",
+      "price": 14,
+      "spirit_base": "bourbon",
+      "badge": "revised",
+      "sort_order": 6
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Brandy Old Fashioned",
+      "description": "Copper & Kings Brandy, Rich Cherry Syrup, Tobacco Bitters",
+      "price": 13,
+      "spirit_base": "brandy",
+      "badge": "revised",
+      "sort_order": 7
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Japanese Old Fashioned",
+      "description": "Suntory Japanese Whisky, Yuzu Syrup, Ginger Bitters",
+      "price": 13,
+      "spirit_base": "whisky",
+      "badge": null,
+      "sort_order": 8
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Amaro Old Fashioned",
+      "description": "Averna Amaro, Sfumato Amaro, Apricot Liqueur, Lemon Bitters",
+      "price": 13,
+      "spirit_base": "amaro",
+      "badge": "revised",
+      "sort_order": 9
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Chai Re-Fashioned",
+      "description": "Chai Infused Old Forester Bourbon, Vanilla Syrup, Chai Bitters",
+      "price": 13,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 10
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Sotol Old Fashioned",
+      "description": "Por Siempre Sotol, Lavender-Thyme Syrup, Lemon Bitters",
+      "price": 13,
+      "spirit_base": "sotol",
+      "badge": null,
+      "sort_order": 11
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "High Roller Wagyu Old Fashioned (Fat-Washed)",
+      "description": "Wagyu Fat Infused Buffalo Trace, Madeira-Okinawa Brown Sugar Reduction, Rosemary Bitters",
+      "price": 20,
+      "spirit_base": "bourbon",
+      "badge": "premium",
+      "sort_order": 12
+    },
+    {
+      "category": "old_fashioneds",
+      "name": "Miso-Maple Old Fashioned",
+      "description": "Mellow Corn Bottled in Bond Whiskey, Miso-Maple Reduction, Toasted Almond Bitters, Vanilla Bitters",
+      "price": 13,
+      "spirit_base": "whiskey",
+      "badge": null,
+      "sort_order": 13
+    },
+    {
+      "category": "seasonal",
+      "name": "Lover's Lane",
+      "description": "Ford's Gin, Hibiscus Syrup, Lemon Juice, Rose Water, Egg White",
+      "price": 12,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "seasonal",
+      "name": "Bis Carré",
+      "description": "Bache American Oak Cognac, Cocchi Di Torino, Faretti Chocolate Biscotti Liqueur, Scrappy's Chocolate Bitters",
+      "price": 13,
+      "spirit_base": "cognac",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "seasonal",
+      "name": "Bull in the Heather",
+      "description": "Gabriel Boudier Saffron Gin, Casterade Armagnac, Heirloom Pineapple Amaro, Cinnamon Syrup, Lemon Juice",
+      "price": 12,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "seasonal",
+      "name": "Frank Bazanka",
+      "description": "Plantation Stiggins' Fancy Pineapple Rum, Montenegro Amaro, Simple Syrup, Lime Juice, El Guapo Cuban Bitters",
+      "price": 12,
+      "spirit_base": "rum",
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "seasonal",
+      "name": "Captain Obvious",
+      "description": "Glenlivet Caribbean Reserve Scotch, St. George Spiced Pear Liqueur, Dry Curacao, Lemon Juice, All Spice Syrup, Plantation Dark Rum Floater",
+      "price": 13,
+      "spirit_base": "scotch",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "seasonal",
+      "name": "Drowning Tiger",
+      "description": "Del Maguey Vida Mezcal, Averna Amaro, Cocchi Di Torino, Chinese 5 Spice Syrup, El Guapo Spiced Cocoa Bitters",
+      "price": 13,
+      "spirit_base": "mezcal",
+      "badge": null,
+      "sort_order": 5
+    },
+    {
+      "category": "seasonal",
+      "name": "Canadian Tuxedo",
+      "description": "Elijah Craig Small Batch Bourbon, Luxardo Apricot Liqueur, Dark Door Spirits Tropical Amaro, Lemon Juice, Chinese 5 Spice Syrup, Angostura Bitters",
+      "price": 12,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 6
+    },
+    {
+      "category": "seasonal",
+      "name": "Matcha Cavaletta",
+      "description": "Wheatley Vodka, Fernet Brancamenta, Trader Vic's White Chocolate Liqueur, Matcha Orgeat, Heavy Cream",
+      "price": 12,
+      "spirit_base": "vodka",
+      "badge": null,
+      "sort_order": 7
+    },
+    {
+      "category": "seasonal",
+      "name": "Funky Cold Martini",
+      "description": "Roots of Ruin Gin, Del Maguey Crema de Mezcal, St. Pete Ferments Dandelion & Onion Kraut Brine, El Guapo Crawfish Bitters — elevated Gibson Martini",
+      "price": 13,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 8
+    },
+    {
+      "category": "seasonal",
+      "name": "Sasha Grey",
+      "description": "Vanilla Infused Wheatley Vodka, Giffard Crème De Pêche, Lime Juice, Pineapple Juice, Vanilla Syrup, Passionfruit Puree, Scrappy's Grapefruit Bitters",
+      "price": 12,
+      "spirit_base": "vodka",
+      "badge": null,
+      "sort_order": 9
+    },
+    {
+      "category": "classics",
+      "name": "Piña Colada Milk Punch (Clarified)",
+      "description": "Plantation 3 Year, Coconut Water, Velvet Falernum, Revival Syrup, Pineapple Juice, Lime Juice, Milk",
+      "price": 12,
+      "spirit_base": "rum",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "classics",
+      "name": "Suffering Bastard",
+      "description": "Old Forester Bourbon, Ford's Gin, Simple Syrup, Lime Juice, Angostura Bitters, Ginger Beer",
+      "price": 13,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "classics",
+      "name": "Army Navy",
+      "description": "Ford's Gin, Lemon Juice, Orgeat, Angostura Bitters",
+      "price": 12,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "classics",
+      "name": "Faux-Spresso Martini",
+      "description": "Wheatley Vodka, Borghetti Espresso Liqueur, Revival's House Cold Brew, Rich Café Bustelo-Vanilla Syrup, Scrappy's Chocolate Bitters",
+      "price": 13,
+      "spirit_base": "vodka",
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "classics",
+      "name": "Jack Rose",
+      "description": "Laird's Straight Apple Brandy BIB, Rittenhouse Rye BIB, Lemon Juice, Grenadine",
+      "price": 13,
+      "spirit_base": "brandy",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "classics",
+      "name": "Ryloma",
+      "description": "Corazon Blanco Tequila, Grapefruit Juice, Rich Blood Orange Syrup, Lime Juice",
+      "price": 13,
+      "spirit_base": "tequila",
+      "badge": null,
+      "sort_order": 5
+    },
+    {
+      "category": "classics",
+      "name": "Blue Dog Sazerac (Fat-Washed)",
+      "description": "Blue Dog Brisket Fat Infused Rittenhouse BIB Rye, Apricot Reduction, Peychaud's & Lemon Bitters, Absinthe Rinse",
+      "price": 13,
+      "spirit_base": "rye",
+      "badge": null,
+      "sort_order": 6
+    },
+    {
+      "category": "classics",
+      "name": "Rob Roy",
+      "description": "Pineapple Infused Glenlivet's Caribbean Reserve, Lofi Sweet Vermouth, El Guapo Vanilla Bitters, Fee Brother's Toasted Almond Bitters",
+      "price": 12,
+      "spirit_base": "scotch",
+      "badge": null,
+      "sort_order": 7
+    },
+    {
+      "category": "classics",
+      "name": "Strawberry Tamarind Margarita",
+      "description": "Strawberry Infused Corazon Blanco Tequila, Triple Sec, Lime Juice, Tamarind Syrup",
+      "price": 12,
+      "spirit_base": "tequila",
+      "badge": null,
+      "sort_order": 8
+    },
+    {
+      "category": "classics",
+      "name": "Savoy Swizzle",
+      "description": "Heirloom Genepy Liqueur, Velvet Falernum, Pineapple Juice, Lime Juice",
+      "price": 13,
+      "spirit_base": "liqueur",
+      "badge": null,
+      "sort_order": 9
+    },
+    {
+      "category": "tiki",
+      "name": "Shark Attack",
+      "description": "Wheatley Vodka, Pama Pomegranate Liqueur, Dark Door Spirits Tropical Amaro, Orange Juice, Hibiscus Syrup, Lime Juice, Orgeat",
+      "price": 13,
+      "spirit_base": "vodka",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "tiki",
+      "name": "Jamaican Miso Horny",
+      "description": "Iichiko Shochu, Plantation Dark Rum, Giffard Abricot du Roussillon, Orgeat, Maple-Miso Syrup, Pineapple Juice, Lime Juice, Smoked Bitters",
+      "price": 13,
+      "spirit_base": "rum",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "tiki",
+      "name": "Junebug Jukebox",
+      "description": "Del Maguey Vida Mezcal, Plantation 3 Stars, Passeo Passionfruit Liqueur, Giffard Banana du Bresil, Grapefruit Juice, Lemon Juice, Lavender Bitters",
+      "price": 13,
+      "spirit_base": "mezcal",
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "tiki",
+      "name": "Strange Victory",
+      "description": "Smith & Cross Jamaican Rum, Rhum JM Blanc, Pimento Dram, Velvet Falernum, Cinnamon Syrup, Orange Juice, Lime Juice, Molasses Bitters",
+      "price": 13,
+      "spirit_base": "rum",
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "tiki",
+      "name": "Year of the Rabbit",
+      "description": "Suntory Toki Japanese Whisky, Ford's Gin, Midori Liqueur, Lemon Juice, Kiwi Puree, Egg White",
+      "price": 13,
+      "spirit_base": "whisky",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "spritz",
+      "name": "London Fog Spritz",
+      "description": "Italicus Rosolio di Bergamotto, Ford's Gin, Earl Grey, Lemon Juice, Grapefruit Juice, Soda Water",
+      "price": 12,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "spritz",
+      "name": "Blood Orange Spritz",
+      "description": "Aperol Apértif, Blood Orange Juice, Prosecco, Fevertree Soda Water",
+      "price": 12,
+      "spirit_base": "aperol",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "spritz",
+      "name": "White Lotus",
+      "description": "Ocucaje Pisco, Winter Syrup, Lemon Juice, Simonet Brut",
+      "price": 12,
+      "spirit_base": "pisco",
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "spritz",
+      "name": "Rose of St. Olaf",
+      "description": "Ramazzotti Rosato Apertivo, Lemon Juice, Tangerine-Orange Syrup, Rosé",
+      "price": 12,
+      "spirit_base": "amaro",
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "spritz",
+      "name": "Alpine Remedy",
+      "description": "Ford's Gin, Giffard Crème De Framboise, Vanilla, Lime Juice, Soda Water, Underberg",
+      "price": 12,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "happy_hour_6",
+      "name": "Paloma",
+      "description": "Corazon Tequila, Lime Juice, Grapefruit Juice, Chili-Lime Salt Rim",
+      "price": 6,
+      "spirit_base": "tequila",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "happy_hour_6",
+      "name": "French 75",
+      "description": "Ford's Gin, Lemon Juice, Lavender-Thyme Syrup, Brut Champagne",
+      "price": 6,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "happy_hour_6",
+      "name": "Bee's Knees",
+      "description": "Ford's Gin, Revival Syrup, Lemon Juice",
+      "price": 6,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "happy_hour_6",
+      "name": "Moscow Mule",
+      "description": "Wheatley Vodka, Lime Juice, Ginger Beer",
+      "price": 6,
+      "spirit_base": "vodka",
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "happy_hour_6",
+      "name": "Lavender Collins",
+      "description": "Ford's Gin, Lavender Syrup, Lemon Juice, Soda Water",
+      "price": 6,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "happy_hour_6",
+      "name": "Bramble",
+      "description": "Old Forester Bourbon, Crème De Mure (Blackberry), Lemon Juice, Simple Syrup",
+      "price": 6,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 5
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Old Fashioned",
+      "description": "Old Forester Bourbon, Revival Syrup, Angostura & Orange Bitters",
+      "price": 8,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Gimlet",
+      "description": "Ford's Gin or Wheatley Vodka, Simple Syrup, Lime Juice",
+      "price": 8,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Margarita",
+      "description": "Corazon Tequila, Triple Sec, Lime Juice, Revival Syrup",
+      "price": 8,
+      "spirit_base": "tequila",
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Cosmopolitan",
+      "description": "Wheatley Vodka, Triple Sec, Cranberry Juice, Lime Juice",
+      "price": 8,
+      "spirit_base": "vodka",
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Manhattan",
+      "description": "Rittenhouse Rye, Antica Sweet Vermouth, Angostura Bitters",
+      "price": 8,
+      "spirit_base": "rye",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Daiquiri",
+      "description": "Plantation 3 Stars Rum, Simple Syrup, Lime Juice",
+      "price": 8,
+      "spirit_base": "rum",
+      "badge": null,
+      "sort_order": 5
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Sazerac",
+      "description": "Rittenhouse Rye, Peychaud's & Lemon Bitters, Revival Syrup, Absinthe Rinse",
+      "price": 8,
+      "spirit_base": "rye",
+      "badge": null,
+      "sort_order": 6
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Negroni",
+      "description": "Ford's Gin, Campari, Antica Sweet Vermouth",
+      "price": 8,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 7
+    },
+    {
+      "category": "happy_hour_8",
+      "name": "Dirty Martini",
+      "description": "Ford's Gin or Wheatley Vodka, Olives (Regular or Bleu Cheese)",
+      "price": 8,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 8
+    },
+    {
+      "category": "mocktails",
+      "name": "Lavender Spritz",
+      "description": "Housemade Lavender Lemonade, Soda Water",
+      "price": 5,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "mocktails",
+      "name": "Italian Spritz",
+      "description": "Lyre's Non-Alcoholic Italian Spritz, Tangerine-Orange Syrup, Soda Water",
+      "price": 7,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "mocktails",
+      "name": "Coffee Martini",
+      "description": "Lyre's Non-Alcoholic Coffee Originale, Cold Brew Coffee, Rich Bustelo Syrup, Heavy Cream",
+      "price": 7,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "mocktails",
+      "name": "Faux-Fashioned",
+      "description": "Lyre's Non-Alcoholic Dark Cane Spirit, Angostura & Orange Bitters, Revival Syrup",
+      "price": 7,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "mocktails",
+      "name": "Mock-Mule",
+      "description": "Lyre's Non-Alcoholic White Cane Spirit, Lime Juice, Revival Syrup, Ginger Beer",
+      "price": 7,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Kentucky Bourbon Trail",
+      "description": "Buffalo Trace Bourbon, Michter's Bourbon, Angels Envy, Elijah Craig",
+      "price": 25,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Tennessee Whiskey Trail",
+      "description": "Uncle Nearest 1884, Jack Daniels Single Barrel, George Dickel Barrel Select, Nelson's Green Brier Sour Mash",
+      "price": 25,
+      "spirit_base": "whiskey",
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Woodford Reserve Flight",
+      "description": "Woodford Bourbon, Woodford Rye, Woodford Wheat, Woodford Double Oak",
+      "price": 25,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Old Forester Whiskey Row Flight",
+      "description": "Old Forester 1870 Original Batch, 1897 Bottled in Bond, 1910 Old Fine Whisky, 1920 Prohibition Style",
+      "price": 30,
+      "spirit_base": "bourbon",
+      "badge": "premium",
+      "sort_order": 3
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Wheated Bourbons",
+      "description": "Maker's Mark 46, Redemption Wheated Bourbon, Larceny Bourbon, Woodford Reserve Wheat",
+      "price": 20,
+      "spirit_base": "bourbon",
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Del Maguey Mezcal Flight",
+      "description": "Del Maguey Vida, Crema de Mezcal, Single Village San Luis Rio, Single Village Milpas",
+      "price": 30,
+      "spirit_base": "mezcal",
+      "badge": null,
+      "sort_order": 5
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Casamigos Agave Flight",
+      "description": "Casamigos Blanco, Reposado, Anejo, Mezcal",
+      "price": 30,
+      "spirit_base": "tequila",
+      "badge": null,
+      "sort_order": 6
+    },
+    {
+      "category": "spirit_flights",
+      "name": "St. George Gin Flight",
+      "description": "St. George Terroir Gin, Botanivore Gin, Dry Rye Gin, Dry Rye Reposado Gin",
+      "price": 25,
+      "spirit_base": "gin",
+      "badge": null,
+      "sort_order": 7
+    },
+    {
+      "category": "spirit_flights",
+      "name": "Amaro Flight",
+      "description": "Amaro Nonino, Averna, Cynar 70, Fernet Branca",
+      "price": 20,
+      "spirit_base": "amaro",
+      "badge": null,
+      "sort_order": 8
+    },
+    {
+      "category": "wine",
+      "name": "Zardetto Prosecco",
+      "description": "Orange rind, brioche, honeyed grapefruit",
+      "price": 8,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "bubbles",
+      "sort_order": 0
+    },
+    {
+      "category": "wine",
+      "name": "Zardetto Private Cuvée Brut",
+      "description": "Apple, pear, peach fruit",
+      "price": 8.75,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "bubbles",
+      "sort_order": 1
+    },
+    {
+      "category": "wine",
+      "name": "Mas Fi Cava Brut",
+      "description": "White flowers and citrus, stone fruits",
+      "price": 8.75,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "bubbles",
+      "sort_order": 2
+    },
+    {
+      "category": "wine",
+      "name": "Mas Fi Cava Brut Rosé",
+      "description": "Fresh strawberries & black currants",
+      "price": 8.75,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "bubbles",
+      "sort_order": 3
+    },
+    {
+      "category": "wine",
+      "name": "Montand Brut Sparkling",
+      "description": "Ripe apples, lovely pear, fresh baked bread",
+      "price": 9.50,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "bubbles",
+      "sort_order": 4
+    },
+    {
+      "category": "wine",
+      "name": "Ponga Sauvignon Blanc",
+      "description": "Pear and apple, hint of vanilla",
+      "price": 9.25,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "white",
+      "sort_order": 5
+    },
+    {
+      "category": "wine",
+      "name": "Lagedr Riff Pinot Grigio",
+      "description": "Fresh, lively, precise, dry and crisp",
+      "price": 8,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "white",
+      "sort_order": 6
+    },
+    {
+      "category": "wine",
+      "name": "Dr. Loosen Riesling",
+      "description": "Refreshing and fruity, fine mineral edge",
+      "price": 8.75,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "white",
+      "sort_order": 7
+    },
+    {
+      "category": "wine",
+      "name": "Oxford Landing Chardonnay",
+      "description": "Peach, nectarine, spice",
+      "price": 8.50,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "white",
+      "sort_order": 8
+    },
+    {
+      "category": "wine",
+      "name": "Stella Moscato",
+      "description": "Satiny, crisp, effervescent, fruity",
+      "price": 8,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "white",
+      "sort_order": 9
+    },
+    {
+      "category": "wine",
+      "name": "Grayson Cellars Merlot",
+      "description": "Soft tannins, dark fruits, oak",
+      "price": 9.50,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "red",
+      "sort_order": 10
+    },
+    {
+      "category": "wine",
+      "name": "Tilia Sauvignon",
+      "description": "Black raspberries, cassis, sweet spice",
+      "price": 9.75,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "red",
+      "sort_order": 11
+    },
+    {
+      "category": "wine",
+      "name": "Tortoise Creek Pinot Noir",
+      "description": "Violets, ripe cherries, other red fruits",
+      "price": 9.50,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "red",
+      "sort_order": 12
+    },
+    {
+      "category": "wine",
+      "name": "NV Marietta Old Vine Red",
+      "description": "Charcuterie, baking spice, and dried herbs",
+      "price": 10.50,
+      "spirit_base": null,
+      "badge": null,
+      "subcategory": "red",
+      "sort_order": 13
+    },
+    {
+      "category": "draft_beer",
+      "name": "Bud Light",
+      "description": null,
+      "price": 3,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "draft_beer",
+      "name": "Green Bench Sunshine City IPA",
+      "description": null,
+      "price": 6.25,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "draft_beer",
+      "name": "Golden Road Mango Cart",
+      "description": "Wheat Ale",
+      "price": 4,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "draft_beer",
+      "name": "Grove Roots Sunset Catch",
+      "description": "German Pilsner",
+      "price": 5,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "draft_beer",
+      "name": "Grove Roots Toast",
+      "description": "Brown Ale",
+      "price": 5,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 4
+    },
+    {
+      "category": "draft_beer",
+      "name": "Michelob Ultra",
+      "description": null,
+      "price": 3,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 5
+    },
+    {
+      "category": "draft_beer",
+      "name": "Rotating Sour",
+      "description": "Ask your bartender",
+      "price": 5,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 6
+    },
+    {
+      "category": "draft_beer",
+      "name": "Rotating Tap",
+      "description": "Ask your bartender",
+      "price": 5,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 7
+    },
+    {
+      "category": "non_alcoholic",
+      "name": "Chameleon Cold Brew",
+      "description": null,
+      "price": 4,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 0
+    },
+    {
+      "category": "non_alcoholic",
+      "name": "Barritts Ginger Beer",
+      "description": null,
+      "price": 2.50,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 1
+    },
+    {
+      "category": "non_alcoholic",
+      "name": "Q Sodas",
+      "description": "Grapefruit Soda, Soda Water, Tonic Water",
+      "price": 2.50,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 2
+    },
+    {
+      "category": "non_alcoholic",
+      "name": "Topo Chico",
+      "description": "Original & Twist of Grapefruit",
+      "price": 3.50,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 3
+    },
+    {
+      "category": "non_alcoholic",
+      "name": "Coke Products",
+      "description": "Coke, Diet Coke, Ginger Ale, Sprite",
+      "price": 1.50,
+      "spirit_base": null,
+      "badge": null,
+      "sort_order": 4
+    }
+  ],
+  "weekly_lineup": {
+    "weekly_revival": "For one week only: a custom recipe or a riff on a classic. $12.",
+    "monday": {
+      "title": "Champagne & Charcuterie",
+      "description": "It's like lunchables but better (you also catch a buzz)."
+    },
+    "tuesday": {
+      "title": "Test Drink Tuesday",
+      "description": "Put down the vodka soda and step outside your comfort zone. Try out one of three weekly drinks invented by yours truly."
+    },
+    "wednesday": {
+      "title": "Wanderlust Wednesday",
+      "description": "Grab a drink but leave your baggage at home. Every Wednesday, we pick a spot on the map and showcase three drinks that highlight the local cocktail culture."
+    },
+    "thursday": {
+      "title": "Tiki Thursday",
+      "description": "Because who doesn't love a tiny paper umbrella in their drink? Explore the varying tastes of tropical drinks."
+    }
+  },
+  "bartenders_choice": {
+    "description": "Let us take a stab at your new favorite drink. All we need is a little guidance.",
+    "spirit_options": ["Vodka", "Gin", "Rum", "Tequila", "Mezcal", "Bourbon", "Rye", "Scotch"],
+    "flavor_profiles": ["Spirit Forward", "Fruity", "Refreshing", "Citrusy", "Savory", "Sweet", "Herbal", "Spicy", "Bitter", "Floral", "Smoky", "Non-Alcoholic"]
+  },
+  "happy_hour_spirits": {
+    "price": 6,
+    "spirits": ["Wheatley Vodka", "Ford Gin", "Plantation 3 Stars Rum", "Corazon Tequila", "Old Forester Bourbon"]
+  },
+  "happy_hour_wines": {
+    "price": 6,
+    "reds": ["Cabernet", "Merlot", "Red Blend"],
+    "whites": ["Chardonnay", "Riesling", "Moscato", "Pinot Grigio", "Sauvignon Blanc"],
+    "bubbles": ["Champagne", "Cava", "Rosé"]
+  },
+  "tiki_note": "All Tiki drinks can be served sharable for $40. Best served for groups of 3. Limit one per group. Single serve Tiki mugs are available for purchase — $25.",
+  "metadata": {
+    "source": "Updated Menus_03.24.2023-1.pdf",
+    "extracted_date": "2026-03-06",
+    "total_cocktails": 74,
+    "total_wines": 14,
+    "total_beers": 24,
+    "note": "Prices and availability may have changed since this menu was printed. Verify with Ryan before deploying to production."
+  }
+}

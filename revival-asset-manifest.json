@@ -1,0 +1,123 @@
+{
+  "brand_colors": {
+    "primary_red": "#8B2332",
+    "gold": "#C4943A",
+    "black": "#0A0A0A",
+    "cream": "#F5F0E8",
+    "note": "The website uses amber (#C8A050) as its accent. The actual brand assets use a deeper red (#8B2332) with gold (#C4943A). Consider adding the red as a secondary accent — it's prominent in all illustrations and the star logo."
+  },
+  "logos": [
+    {
+      "file": "Merch 2025/Star Logo.png",
+      "description": "Primary star burst logo — deep red 12-point star with gold serif 'R'. Use as favicon, social avatar, watermark.",
+      "recommended_use": ["favicon", "og:image badge", "loading state", "footer icon"],
+      "format": "PNG",
+      "transparent_bg": true
+    },
+    {
+      "file": "Merch 2025/Revival Forever_Revival Forever.png",
+      "description": "Revival Forever wordmark with intertwined snake. Red and black striped snake, gold star accent. Horizontal layout.",
+      "recommended_use": ["footer logo", "merch page header", "about section"],
+      "format": "PNG",
+      "transparent_bg": true
+    },
+    {
+      "file": "Merch 2025/Revival Forever_Snake.png",
+      "description": "Snake illustration only (no text) from the Revival Forever mark. Red and black stripes.",
+      "recommended_use": ["decorative divider", "section accent", "loading animation"],
+      "format": "PNG",
+      "transparent_bg": true
+    },
+    {
+      "file": "public/images/revival-logo.jpg",
+      "description": "Current website logo (already in repo). Used in nav, footer, hero.",
+      "recommended_use": ["keep as primary nav logo"],
+      "format": "JPG",
+      "transparent_bg": false
+    }
+  ],
+  "illustrations": [
+    {
+      "file": "Illustrations/dreamer.png",
+      "description": "Woman in red dress seated on bar stool, holding rose, cocktail in hand, gazing at crescent moon and stars. Ink line art with red accents.",
+      "recommended_use": ["homepage hero or about section", "jeannie page", "gallery 'drinks' category"],
+      "style": "Black ink + red accent on white"
+    },
+    {
+      "file": "Illustrations/mystic.png",
+      "description": "Hand emerging from smoke/clouds holding an old fashioned glass with red cocktail and garnish.",
+      "recommended_use": ["old fashioneds menu section header", "bartender's choice feature"],
+      "style": "Black ink + red accent on white"
+    },
+    {
+      "file": "Illustrations/old fashioned.png",
+      "description": "Close-up of an old fashioned cocktail in a crystal glass with cherry garnish and citrus peel. Red liquid, decorative glass pattern.",
+      "recommended_use": ["menu page hero", "old fashioneds section icon", "happy hour promo"],
+      "style": "Black ink + red accent on white"
+    },
+    {
+      "file": "Illustrations/snake guy.png",
+      "description": "Man in vintage suit with red tie, relaxed on ground holding coupe glass, with a snake nearby. Prohibition-era vibe.",
+      "recommended_use": ["about/team page", "contact page", "seasonal section"],
+      "style": "Black ink + red accent on white"
+    },
+    {
+      "file": "Illustrations/fishing.png",
+      "description": "1920s flapper woman in red dress standing at fishbowl on ornate table, art deco style.",
+      "recommended_use": ["gallery page header", "spritz section", "gift card promo"],
+      "style": "Black ink + red accent on white"
+    },
+    {
+      "file": "Illustrations/moon.png",
+      "description": "Crescent moon face with all-seeing eye holding a goblet filled with red cocktail. Mystical/occult aesthetic.",
+      "recommended_use": ["homepage section divider", "weekly revival feature", "tiki section"],
+      "style": "Black ink + red accent on white"
+    },
+    {
+      "file": "Illustrations/twins.png",
+      "description": "Two men in 1920s suits holding bottles, all-seeing eye pyramid behind them. Red triangle and eye, red puddle at feet.",
+      "recommended_use": ["spirit flights section", "team page", "happy hour promo"],
+      "style": "Black ink + red accent on white"
+    }
+  ],
+  "merch_assets": [
+    {
+      "file": "Merch 2025/Keychains/House.png",
+      "description": "Keychain design — 'Revival / House of Spirits' with snake wrapped around martini glass, stars and moons.",
+      "product_name": "House of Spirits Keychain",
+      "recommended_price": null
+    },
+    {
+      "file": "Merch 2025/Keychains/Poison.png",
+      "description": "Keychain design — 'Revival / Pick Your Poison' with snake wrapped around martini glass, stars and moons.",
+      "product_name": "Pick Your Poison Keychain",
+      "recommended_price": null
+    },
+    {
+      "file": "Merch 2025/Palmistry.png",
+      "description": "Palmistry hand illustration with snake, star logo, and 'Purveyors of Fine Spirits / Revival' text. Dark background with gold stars.",
+      "product_name": "Palmistry Print / Poster",
+      "recommended_price": null
+    }
+  ],
+  "coaster_designs": {
+    "pdfs": ["Coasters/1.pdf", "Coasters/2.pdf", "Coasters/3.pdf", "Coasters/4.pdf", "Coasters/5.pdf", "Coasters/6.pdf"],
+    "draft_images": ["Coasters/draft-01.png", "Coasters/draft-02.png", "Coasters/draft-04.png", "Coasters/draft-05.png", "Coasters/draft-06.png", "Coasters/draft-07.png"],
+    "note": "6 coaster designs in PDF (print-ready) plus 6 draft PNGs. Could be featured on the merch page or gallery."
+  },
+  "stickers": {
+    "files": ["Stickers/sticker1.png", "Stickers/sticker2.png", "Stickers/sticker3.png"],
+    "source_file": "Stickers/stickers.ai",
+    "note": "Older design generation with different color palette (teal/purple). May be legacy. Verify with Ryan if these should appear on the site."
+  },
+  "deployment_notes": {
+    "image_optimization": "All PNGs should be converted to WebP for the website. Use Next.js Image component with width/height for CLS prevention.",
+    "suggested_public_structure": {
+      "/public/images/illustrations/": "All 7 illustration PNGs",
+      "/public/images/logos/": "Star Logo, Revival Forever wordmark, Revival Forever snake",
+      "/public/images/merch/": "Keychain designs, Palmistry, coaster drafts",
+      "/public/images/gallery/": "Photo shoot images (once available)"
+    },
+    "transparent_backgrounds": "Most illustrations and logos have white/transparent backgrounds. For the dark website theme, either: (a) invert/process to work on dark backgrounds, or (b) display in light-colored containers/cards."
+  }
+}
