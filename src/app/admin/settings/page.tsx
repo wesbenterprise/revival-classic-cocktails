@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-
-type DayOfWeek = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+import { DayOfWeek } from '@/types/database';
+import { REVIVAL_HOURS } from '@/lib/hours';
 
 interface HoursEntry {
   open: string;
@@ -19,14 +19,17 @@ const dayOrder: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'fr
 export default function AdminSettings() {
   const [saved, setSaved] = useState(false);
 
-  const [hours, setHours] = useState<Record<DayOfWeek, HoursEntry>>({
-    monday: { open: '17:00', close: '00:00', is_closed: false },
-    tuesday: { open: '17:00', close: '00:00', is_closed: false },
-    wednesday: { open: '17:00', close: '00:00', is_closed: false },
-    thursday: { open: '17:00', close: '01:00', is_closed: false },
-    friday: { open: '17:00', close: '02:00', is_closed: false },
-    saturday: { open: '17:00', close: '02:00', is_closed: false },
-    sunday: { open: '', close: '', is_closed: true },
+  const [hours, setHours] = useState<Record<DayOfWeek, HoursEntry>>(() => {
+    // Initialize from shared hours config, ensuring open/close are strings for inputs
+    const initial: Record<string, HoursEntry> = {};
+    for (const [day, entry] of Object.entries(REVIVAL_HOURS)) {
+      initial[day] = {
+        open: entry.open ?? '',
+        close: entry.close ?? '',
+        is_closed: entry.is_closed,
+      };
+    }
+    return initial as Record<DayOfWeek, HoursEntry>;
   });
 
   const [address, setAddress] = useState({

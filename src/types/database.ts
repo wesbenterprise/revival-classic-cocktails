@@ -21,7 +21,7 @@ export type WineSubcategory = 'bubbles' | 'white' | 'red';
 
 export type TeamStatus = 'active' | 'alumni';
 export type EventType = 'event' | 'private';
-export type GalleryCategory = 'room' | 'drinks' | 'people' | 'nights';
+export type GalleryCategory = 'room' | 'drinks' | 'people' | 'nights' | 'art';
 export type SubmissionCategory = 'general' | 'private_events' | 'catering' | 'press' | 'employment' | 'vendor' | 'feedback';
 export type DayOfWeek = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
 export type AdminRole = 'super_admin' | 'admin';

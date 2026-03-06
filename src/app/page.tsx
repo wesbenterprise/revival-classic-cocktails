@@ -7,6 +7,7 @@ import TonightBlock from '@/components/TonightBlock';
 import WeeklyStrip from '@/components/WeeklyStrip';
 import { TonightData, ScheduleRecurring } from '@/types/database';
 import { getTodayDow } from '@/lib/utils';
+import { getRevivalStatus } from '@/lib/hours';
 
 const WEEKLY_SPECIALS: ScheduleRecurring[] = [
   {
@@ -40,9 +41,8 @@ const WEEKLY_SPECIALS: ScheduleRecurring[] = [
 const GOOGLE_MAPS_URL = 'https://maps.google.com/?q=119+S+Kentucky+Ave+Lakeland+FL+33801';
 
 export default function HomePage() {
-  // TODO: Replace with real data from Supabase
-  const isOpen = true;
-  const todayHours = '5 PM – 12 AM';
+  // Dynamic hours from shared config
+  const { isOpen, todayHours } = getRevivalStatus();
 
   // Dynamic tonight's special based on current day (EST)
   const today = getTodayDow();

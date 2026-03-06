@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { MapPin, Clock, Car, Users, Navigation, Phone } from 'lucide-react';
-import { DayOfWeek, HoursConfig } from '@/types/database';
+import { DayOfWeek } from '@/types/database';
 import { formatTime12, getDayLabel, getTodayDow } from '@/lib/utils';
+import { REVIVAL_HOURS } from '@/lib/hours';
 
 export const metadata: Metadata = {
   title: 'Visit Revival | Hours, Parking & Directions \u2014 Downtown Lakeland',
@@ -21,15 +22,7 @@ const ADDRESS = {
   google_maps_url: 'https://maps.google.com/?q=119+S+Kentucky+Ave+Lakeland+FL+33801',
 };
 
-const HOURS: HoursConfig = {
-  monday:    { open: '13:00', close: '00:00', is_closed: false },
-  tuesday:   { open: '13:00', close: '02:00', is_closed: false },
-  wednesday: { open: '13:00', close: '02:00', is_closed: false },
-  thursday:  { open: '13:00', close: '02:00', is_closed: false },
-  friday:    { open: '12:00', close: '02:00', is_closed: false },
-  saturday:  { open: '12:00', close: '02:00', is_closed: false },
-  sunday:    { open: '15:00', close: '00:00', is_closed: false },
-};
+const HOURS = REVIVAL_HOURS;
 
 const PARKING = 'Free street parking along Kentucky Ave and surrounding downtown blocks.';
 
