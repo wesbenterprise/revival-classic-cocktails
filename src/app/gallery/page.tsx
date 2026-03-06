@@ -16,6 +16,25 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
   { id: '5', image_url: '/images/illustrations/moon.png', category: 'art', caption: 'Moonlight', sort_order: 4, created_at: '' },
   { id: '6', image_url: '/images/illustrations/snake-guy.png', category: 'art', caption: 'The Snake Charmer', sort_order: 5, created_at: '' },
   { id: '7', image_url: '/images/illustrations/twins.png', category: 'art', caption: 'The Twins', sort_order: 6, created_at: '' },
+  // Room
+  { id: 'r1', image_url: '/images/gallery/bar-interior.jpg', category: 'room', caption: 'The Bar', sort_order: 10, created_at: '' },
+  { id: 'r2', image_url: '/images/gallery/bookshelf.jpg', category: 'room', caption: 'The Library Wall', sort_order: 11, created_at: '' },
+  { id: 'r3', image_url: '/images/gallery/revival-exterior.jpg', category: 'room', caption: '119 South Kentucky', sort_order: 12, created_at: '' },
+  { id: 'r4', image_url: '/images/gallery/bar-scene.jpg', category: 'room', caption: 'Saturday Night', sort_order: 13, created_at: '' },
+  // Drinks
+  { id: 'd1', image_url: '/images/gallery/cocktail-rybo.jpg', category: 'drinks', caption: 'The Rybonator', sort_order: 20, created_at: '' },
+  { id: 'd2', image_url: '/images/gallery/old-fashioned-photo.jpg', category: 'drinks', caption: 'The Old Fashioned', sort_order: 21, created_at: '' },
+  { id: 'd3', image_url: '/images/gallery/ig-blood-orange-cocktail.jpg', category: 'drinks', caption: 'Blood Orange Season', sort_order: 22, created_at: '' },
+  { id: 'd4', image_url: '/images/gallery/ig-craft-cocktail.jpg', category: 'drinks', caption: 'Craft & Care', sort_order: 23, created_at: '' },
+  { id: 'd5', image_url: '/images/gallery/ig-whiskey.jpg', category: 'drinks', caption: 'Top Shelf', sort_order: 24, created_at: '' },
+  { id: 'd6', image_url: '/images/gallery/ig-cocktail-jan.jpg', category: 'drinks', caption: 'January Specials', sort_order: 25, created_at: '' },
+  // People
+  { id: 'p1', image_url: '/images/gallery/ig-team-photo.jpg', category: 'people', caption: 'The Revival Family', sort_order: 30, created_at: '' },
+  // Nights
+  { id: 'n1', image_url: '/images/gallery/ig-love-language-menu.jpg', category: 'nights', caption: 'Love Language Menu', sort_order: 40, created_at: '' },
+  { id: 'n2', image_url: '/images/gallery/ig-new-years.jpg', category: 'nights', caption: "New Year's Eve", sort_order: 41, created_at: '' },
+  { id: 'n3', image_url: '/images/gallery/ig-christmas.jpg', category: 'nights', caption: 'Holiday Season', sort_order: 42, created_at: '' },
+  { id: 'n4', image_url: '/images/gallery/ig-halloween.jpg', category: 'nights', caption: 'Halloween at Revival', sort_order: 43, created_at: '' },
 ];
 
 // ============================================================
@@ -63,17 +82,6 @@ export default function GalleryPage() {
           The room. The drinks. The people. The nights.
         </p>
       </section>
-
-      {/* Coming soon banner */}
-      <div className="max-w-3xl mx-auto px-6 mb-8">
-        <div className="rounded-lg border border-revival-amber/30 bg-revival-amber/5 px-6 py-4 text-center">
-          <p className="text-revival-amber text-xs tracking-[0.2em] uppercase mb-1">Coming Soon</p>
-          <p className="text-revival-cream-muted text-sm leading-relaxed">
-            Gallery coming soon — professional photography in progress.
-            Enjoy our brand illustrations in the meantime.
-          </p>
-        </div>
-      </div>
 
       {/* Category filters */}
       <nav className="sticky top-16 z-30 bg-revival-black/90 backdrop-blur-md border-b border-revival-border/30">
