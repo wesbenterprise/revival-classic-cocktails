@@ -75,9 +75,9 @@ export default function DrinkItem({ item }: { item: MenuItem }) {
             <span className="hidden sm:block text-revival-border tracking-[0.3em] text-xs">
               ···········
             </span>
-            {item.price && (
+            {item.price != null && (
               <span className="text-revival-cream-muted text-sm tabular-nums">
-                {item.price}
+                ${Number.isInteger(item.price) ? item.price : item.price.toFixed(2)}
               </span>
             )}
           </div>

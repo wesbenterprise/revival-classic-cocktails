@@ -259,16 +259,23 @@ export default function MenuPage() {
         </div>
       </div>
 
-      {/* Bartender&#39;s Choice */}
+      {/* Bartender's Choice */}
       <div className="max-w-2xl mx-auto px-6 mb-8">
-        <div className="rounded-lg border border-revival-border/50 bg-revival-dark px-5 py-4 text-center">
-          <p className="text-revival-amber text-xs tracking-[0.2em] uppercase mb-1">{"Bartender\u2019s Choice"}</p>
+        <div className="rounded-lg border border-revival-amber/30 bg-revival-dark p-6 text-center">
+          <p className="text-revival-amber text-xs tracking-[0.2em] uppercase mb-2">★ Bartender&apos;s Choice</p>
           <p className="text-revival-cream-muted text-sm">
             Let us take a stab at your new favorite drink. All we need is a little guidance.
           </p>
-          <p className="mt-2 text-revival-cream-dim text-xs">
-            Pick a spirit and a flavor profile — we&apos;ll do the rest.
-          </p>
+          <div className="mt-4 space-y-2 text-xs text-revival-cream-dim">
+            <p>
+              <span className="text-revival-cream-muted font-medium">Spirit:</span>{' '}
+              Vodka · Gin · Rum · Tequila · Mezcal · Bourbon · Rye · Scotch
+            </p>
+            <p>
+              <span className="text-revival-cream-muted font-medium">Profile:</span>{' '}
+              Spirit Forward · Fruity · Refreshing · Citrusy · Savory · Sweet · Herbal · Spicy · Bitter · Floral · Smoky · Non-Alcoholic
+            </p>
+          </div>
         </div>
       </div>
 
@@ -320,6 +327,11 @@ export default function MenuPage() {
                 {isHappyHour && (
                   <p className="mt-2 text-revival-amber text-xs tracking-[0.15em] uppercase font-medium">
                     Monday–Friday, 1 PM – 7 PM
+                  </p>
+                )}
+                {cat === 'happy_hour_6' && (
+                  <p className="mt-2 text-revival-cream-dim text-xs leading-relaxed">
+                    Well spirits $6: Wheatley Vodka, Ford Gin, Plantation 3 Stars Rum, Corazon Tequila, Old Forester Bourbon. House wines $6.
                   </p>
                 )}
                 {isTiki && (
