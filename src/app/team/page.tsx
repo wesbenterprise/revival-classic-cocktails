@@ -85,6 +85,16 @@ export default function TeamPage() {
             <TeamCard key={member.id} member={member} />
           ))}
         </div>
+
+        {/* Desiderata quote */}
+        <blockquote className="max-w-xl mx-auto mt-12 border-l-2 border-revival-amber/50 pl-6 py-2">
+          <p className="font-display text-xl text-revival-cream italic leading-relaxed">
+            &ldquo;Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.&rdquo;
+          </p>
+          <cite className="block mt-3 text-revival-cream-dim text-sm not-italic">
+            — Max Ehrmann, <span className="italic">Desiderata</span>
+          </cite>
+        </blockquote>
       </section>
 
       {/* ============================
@@ -172,15 +182,6 @@ export default function TeamPage() {
             signature cocktails. We also host a generous list of domestic beer, craft beer, and
             a variety of wines and champagnes.
           </p>
-
-          <blockquote className="border-l-2 border-revival-amber/50 pl-6 py-2 my-8">
-            <p className="font-display text-xl text-revival-cream italic leading-relaxed">
-              &ldquo;Enjoy your achievements as well as your plans. Keep interested in your own career, however humble; it is a real possession in the changing fortunes of time.&rdquo;
-            </p>
-            <cite className="block mt-3 text-revival-cream-dim text-sm not-italic">
-              — Max Ehrmann, <span className="italic">Desiderata</span>
-            </cite>
-          </blockquote>
 
           <p>
             We invite you to experiment with our mixologists in the pursuit of expanding your

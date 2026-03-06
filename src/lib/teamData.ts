@@ -42,7 +42,7 @@ export const TEAM_DATA: TeamMemberData[] = [
   },
   {
     id: '6', name: 'Wilges', title: 'Operations',
-    bio: '',
+    bio: 'Behind-the-scenes guru. Like Santa Claus — you never see him, but you know he visited.',
     photo_url: '/images/team/wilges.jpg', status: 'active', sort_order: 5,
   },
   {
