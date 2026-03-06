@@ -24,7 +24,10 @@ export default function JeanniePage() {
           <h1 className="font-display text-4xl md:text-6xl text-revival-cream leading-tight">
             Jeannie Weaver Lopez
           </h1>
-          <p className="mt-3 text-revival-cream-dim text-lg">
+          <p className="mt-2 text-revival-amber-dim text-xs tracking-[0.2em] uppercase">
+            Master Mixologist
+          </p>
+          <p className="mt-2 text-revival-cream-dim text-lg">
             1985 – 2024
           </p>
           <div className="mt-8 w-16 h-px bg-revival-amber/50 mx-auto" />
