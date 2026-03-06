@@ -23,7 +23,7 @@ export default function GalleryClient({ photos: GALLERY_PHOTOS }: GalleryClientP
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filtered = activeCategory === 'all'
-    ? GALLERY_PHOTOS
+    ? GALLERY_PHOTOS.filter((p) => p.category !== 'art')
     : GALLERY_PHOTOS.filter((p) => p.category === activeCategory);
 
   const sortedPhotos = [...filtered].sort((a, b) => a.sort_order - b.sort_order);
