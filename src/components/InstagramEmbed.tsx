@@ -1,37 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
-
-const INSTAGRAM_POSTS = [
-  'https://www.instagram.com/p/DGzJn5WR8rQ/',
-  'https://www.instagram.com/p/DGVXeeFxuQq/',
-  'https://www.instagram.com/p/DFaFwMrx6d4/',
-  'https://www.instagram.com/p/DEz2q-yReXd/',
-];
-
 export default function InstagramEmbed() {
-  useEffect(() => {
-    // Load Instagram embed script
-    const existingScript = document.querySelector('script[src*="instagram.com/embed.js"]');
-    if (existingScript) {
-      // Re-process embeds if script already loaded
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      if ((window as any).instgrm) {
-        (window as any).instgrm.Embeds.process();
-      }
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = '//www.instagram.com/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup not strictly necessary since Instagram's script is idempotent
-    };
-  }, []);
-
   return (
     <section className="max-w-4xl mx-auto px-6 py-12">
       <div className="text-center mb-8">
@@ -54,26 +23,23 @@ export default function InstagramEmbed() {
         </a>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {INSTAGRAM_POSTS.map((url) => (
-          <div key={url} className="flex justify-center">
-            <blockquote
-              className="instagram-media"
-              data-instgrm-permalink={url}
-              data-instgrm-version="14"
-              style={{
-                background: '#1a1a1a',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '8px',
-                maxWidth: '540px',
-                width: '100%',
-                minWidth: '280px',
-                padding: '0',
-              }}
-            />
-          </div>
-        ))}
-      </div>
+      {/* Instagram feed snapshot */}
+      <a
+        href="https://instagram.com/revivallakeland"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block rounded-lg overflow-hidden border border-revival-border/30 hover:border-revival-amber/30 transition-all duration-300"
+      >
+        <img
+          src="/images/gallery/instagram-feed.jpg"
+          alt="Revival Lakeland Instagram — @revivallakeland"
+          className="w-full h-auto"
+        />
+      </a>
+
+      <p className="text-center mt-4 text-revival-cream-dim text-xs">
+        Follow us on Instagram for the latest cocktails, events, and vibes.
+      </p>
     </section>
   );
 }
