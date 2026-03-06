@@ -30,17 +30,6 @@ export default async function VisitPage() {
         </p>
       </section>
 
-      {/* Bar photo */}
-      <div className="max-w-4xl mx-auto px-6 mb-12">
-        <div className="rounded-lg overflow-hidden border border-revival-border/50">
-          <img
-            src="/images/bar-backwall.jpg"
-            alt="Revival Craft Cocktails — the bar"
-            className="w-full h-auto"
-          />
-        </div>
-      </div>
-
       <div className="max-w-4xl mx-auto px-6 pb-24">
         {/* Map embed */}
         <section className="rounded-lg overflow-hidden border border-revival-border/50 mb-12">
@@ -176,6 +165,15 @@ export default async function VisitPage() {
               — Max Ehrmann, <span className="italic">Desiderata</span>
             </cite>
           </blockquote>
+        </div>
+
+        {/* Bar photo */}
+        <div className="mt-12 rounded-lg overflow-hidden border border-revival-border/50">
+          <img
+            src="/images/bar-backwall.jpg"
+            alt="Revival Craft Cocktails — the bar"
+            className="w-full h-auto"
+          />
         </div>
       </div>
     </div>
