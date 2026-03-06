@@ -1,10 +1,14 @@
+'use client';
+
 import { TonightData } from '@/types/database';
+import { getTodayDow, getDayLabel } from '@/lib/utils';
 
 interface TonightBlockProps {
   data: TonightData;
 }
 
 export default function TonightBlock({ data }: TonightBlockProps) {
+  const dayName = getDayLabel(getTodayDow());
   // Private event — closure message
   if (data.type === 'private') {
     return (
@@ -23,8 +27,11 @@ export default function TonightBlock({ data }: TonightBlockProps) {
   return (
     <div className="text-center px-6 py-12">
       {/* Label */}
-      <p className="text-revival-amber text-xs tracking-[0.3em] uppercase mb-4">
+      <p className="text-revival-amber text-xs tracking-[0.3em] uppercase mb-1">
         {data.type === 'event' ? 'Tonight' : data.type === 'recurring' ? "Tonight's Special" : 'Every Night'}
+      </p>
+      <p className="text-revival-cream-dim text-[11px] tracking-wide mb-4">
+        {dayName}
       </p>
 
       {/* Title */}

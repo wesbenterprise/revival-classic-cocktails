@@ -2,37 +2,16 @@ import type { Metadata } from 'next';
 import { MapPin, Clock, Car, Users, Navigation, Phone } from 'lucide-react';
 import { DayOfWeek } from '@/types/database';
 import { formatTime12, getDayLabel, getTodayDow } from '@/lib/utils';
-import { REVIVAL_HOURS } from '@/lib/hours';
+import { SITE_HOURS, SITE_ADDRESS } from '@/lib/siteConfig';
 
-export const metadata: Metadata = {
-  title: 'Visit Revival | Hours, Parking & Directions \u2014 Downtown Lakeland',
-  description:
-    '119 S Kentucky Ave, Lakeland FL. Open 7 days. Happy hour Mon\u2013Fri 1\u20137pm. Free street parking after 3:30. Walk-in only, first come first served.',
-};
-
-// ============================================================
-// REAL DATA — Will move to Supabase site_settings
-// ============================================================
-const ADDRESS = {
-  street: '119 S Kentucky Ave',
-  city: 'Lakeland',
-  state: 'FL',
-  zip: '33801',
-  phone: '(863) 606-6090',
-  google_maps_url: 'https://maps.google.com/?q=119+S+Kentucky+Ave+Lakeland+FL+33801',
-};
-
-const HOURS = REVIVAL_HOURS;
+// Monday-first order for display
+const DISPLAY_DAYS: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 const PARKING = 'Free street parking along Kentucky Ave and surrounding downtown blocks.';
 
 const WALK_IN_POLICY = "Seating is first come, first serve. Just walk in.";
 
 const NEIGHBORHOOD = 'In the heart of downtown Lakeland, just off Munn Park.';
-
-// ============================================================
-
-const HOURS_ORDER: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 export default function VisitPage() {
   const today = getTodayDow();
@@ -74,14 +53,14 @@ export default function VisitPage() {
                 <h2 className="text-xs tracking-[0.3em] uppercase text-revival-amber">Address</h2>
               </div>
               <p className="font-display text-xl text-revival-cream leading-relaxed">
-                {ADDRESS.street}
+                {SITE_ADDRESS.street}
               </p>
               <p className="text-revival-cream-muted">
-                {ADDRESS.city}, {ADDRESS.state} {ADDRESS.zip}
+                {SITE_ADDRESS.city}, {SITE_ADDRESS.state} {SITE_ADDRESS.zip}
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-4">
                 <a
-                  href={ADDRESS.google_maps_url}
+                  href={SITE_ADDRESS.google_maps_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -94,7 +73,7 @@ export default function VisitPage() {
                   Get Directions
                 </a>
                 <a
-                  href={`tel:${ADDRESS.phone.replace(/[^\d]/g, '')}`}
+                  href={`tel:${SITE_ADDRESS.phone.replace(/[^\d]/g, '')}`}
                   className="
                     inline-flex items-center gap-2 px-5 py-2.5 rounded-full
                     border border-revival-border text-revival-cream-muted text-sm tracking-wide
@@ -102,7 +81,7 @@ export default function VisitPage() {
                   "
                 >
                   <Phone size={14} />
-                  {ADDRESS.phone}
+                  {SITE_ADDRESS.phone}
                 </a>
               </div>
             </div>
@@ -138,8 +117,8 @@ export default function VisitPage() {
             </div>
 
             <div className="rounded-lg border border-revival-border/50 overflow-hidden">
-              {HOURS_ORDER.map((day) => {
-                const hours = HOURS[day];
+              {DISPLAY_DAYS.map((day) => {
+                const hours = SITE_HOURS[day];
                 const isToday = day === today;
 
                 return (
