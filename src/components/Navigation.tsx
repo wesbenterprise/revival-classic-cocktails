@@ -7,10 +7,10 @@ import { Menu, X, Phone } from 'lucide-react';
 const NAV_LINKS = [
   { href: '/', label: 'Tonight' },
   { href: '/menu', label: 'Menu' },
+  { href: '/gallery', label: 'Gallery' },
   { href: '/visit', label: 'Visit' },
   { href: '/team', label: 'The Team' },
   { href: '/jeannie', label: 'Jeannie' },
-  { href: '/gallery', label: 'Gallery' },
   { href: '/merch', label: 'Merch' },
   { href: '/contact', label: 'Contact Us' },
 ];
