@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { href: '/', label: 'Tonight' },
   { href: '/menu', label: 'Menu' },
   { href: '/visit', label: 'Visit' },
-  { href: '/team', label: 'Our Story' },
+  { href: '/team', label: 'The Team' },
   { href: '/jeannie', label: 'Jeannie' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/merch', label: 'Merch' },

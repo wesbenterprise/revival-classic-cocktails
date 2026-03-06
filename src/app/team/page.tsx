@@ -3,31 +3,31 @@ import Link from 'next/link';
 import { TeamMember } from '@/types/database';
 
 export const metadata: Metadata = {
-  title: 'Our Team | Revival Craft Cocktails \u2014 Lakeland',
+  title: 'The Team | Revival Craft Cocktails — Lakeland',
   description:
     'Meet the bartenders and team behind Revival Craft Cocktails in downtown Lakeland, Florida.',
 };
 
 // ============================================================
-// DEMO DATA — Replace with Supabase query
+// TEAM DATA — from revivallakeland.com/home/about/
 // ============================================================
-const DEMO_TEAM: TeamMember[] = [
+const ACTIVE_TEAM: TeamMember[] = [
   {
     id: '1', name: 'Ryan Lopez', title: 'Owner',
     bio: 'Carrying forward the vision Jeannie built, one pour at a time.',
-    photo_url: null, status: 'active', sort_order: 0,
+    photo_url: '/images/team/ryan.jpg', status: 'active', sort_order: 0,
     created_at: '', updated_at: '',
   },
   {
     id: '2', name: 'Katie', title: 'Lead Bartender',
     bio: 'One of the longest-tenured members of the Revival family. Master of classics, lover of experimentation. Also skeet shoots.',
-    photo_url: null, status: 'active', sort_order: 1,
+    photo_url: '/images/team/katie.jpg', status: 'active', sort_order: 1,
     created_at: '', updated_at: '',
   },
   {
     id: '3', name: 'Jordane', title: 'Bartender',
-    bio: 'Brings innovative qualities to every cocktail. Specializes in spiced spirits and bold recipes.',
-    photo_url: null, status: 'active', sort_order: 2,
+    bio: 'Brings innovative qualities to every cocktail. Specializes in spiced spirits and bold recipes. With her bubbly attitude, cocktails are only exceeded by conversation.',
+    photo_url: '/images/team/jordane.jpg', status: 'active', sort_order: 2,
     created_at: '', updated_at: '',
   },
   {
@@ -38,20 +38,30 @@ const DEMO_TEAM: TeamMember[] = [
   },
 ];
 
-const DEMO_ALUMNI: TeamMember[] = [
+const ALUMNI: TeamMember[] = [
   {
-    id: '10', name: 'Alec', title: 'Bartender',
-    bio: null, photo_url: null, status: 'alumni', sort_order: 0,
+    id: '10', name: 'Jeannie', title: 'Founder & Master Mixologist',
+    bio: null, photo_url: '/images/team/jeannie.jpg', status: 'alumni', sort_order: 0,
     created_at: '', updated_at: '',
   },
   {
-    id: '11', name: 'Jordan', title: 'Bartender',
-    bio: null, photo_url: null, status: 'alumni', sort_order: 1,
+    id: '11', name: 'Alec', title: 'Bartender',
+    bio: null, photo_url: '/images/team/alec.jpg', status: 'alumni', sort_order: 1,
     created_at: '', updated_at: '',
   },
   {
-    id: '12', name: 'Josh', title: 'Bartender',
-    bio: null, photo_url: null, status: 'alumni', sort_order: 2,
+    id: '12', name: 'Wilges', title: 'Bartender',
+    bio: null, photo_url: '/images/team/wilges.jpg', status: 'alumni', sort_order: 2,
+    created_at: '', updated_at: '',
+  },
+  {
+    id: '13', name: 'Jordan', title: 'Bartender',
+    bio: null, photo_url: null, status: 'alumni', sort_order: 3,
+    created_at: '', updated_at: '',
+  },
+  {
+    id: '14', name: 'Josh', title: 'Bartender',
+    bio: null, photo_url: null, status: 'alumni', sort_order: 4,
     created_at: '', updated_at: '',
   },
 ];
@@ -112,110 +122,28 @@ function TeamCard({ member, size = 'large' }: { member: TeamMember; size?: 'larg
   );
 }
 
-export default function OurStoryPage() {
-  const active = DEMO_TEAM.filter((m) => m.status === 'active').sort((a, b) => a.sort_order - b.sort_order);
-  const alumni = DEMO_ALUMNI.filter((m) => m.status === 'alumni').sort((a, b) => a.sort_order - b.sort_order);
+export default function TeamPage() {
+  const active = ACTIVE_TEAM.sort((a, b) => a.sort_order - b.sort_order);
+  const alumni = ALUMNI.sort((a, b) => a.sort_order - b.sort_order);
 
   return (
     <div className="min-h-screen">
       {/* Header */}
       <section className="pt-20 pb-6 px-6 text-center">
-        <h1 className="font-display text-4xl md:text-6xl text-revival-cream">Our Story</h1>
+        <h1 className="font-display text-4xl md:text-6xl text-revival-cream">The Team</h1>
+        <p className="mt-3 text-revival-cream-dim text-sm tracking-wide">
+          The people who make Revival what it is.
+        </p>
       </section>
 
       {/* ============================
-          THE REVIVAL STORY
+          THE TEAM (top of page)
           ============================ */}
-      <section className="max-w-2xl mx-auto px-6 py-10">
-        <div className="space-y-6 text-revival-cream-muted leading-relaxed">
-          {/* Opening */}
-          <p className="font-display text-2xl md:text-3xl text-revival-cream leading-snug">
-            No gimmicks. No snazz. Just the belief that a beverage program can challenge you to enjoy some of earth's finest pleasures.
-          </p>
-
-          <div className="w-12 h-px bg-revival-amber/50" />
-
-          <p>
-            Revival was born out of a simple idea: downtown Lakeland deserved a place where
-            craft cocktails were taken seriously, but the people never were. A place where you
-            could walk in alone and leave with a friend. Where the bartender remembers your
-            name, your drink, and what you were talking about last Tuesday.
-          </p>
-
-          <p>
-            In 2017, founder Jeannie Weaver Lopez transformed a vacant storefront at 119 South
-            Kentucky Avenue — a building that had housed everything from a record shop to a
-            costume store — into the warm, moody room you know today. She brought with her
-            years of experience from behind the bar at Linksters Tap Room and a vision for
-            something downtown Lakeland had never seen.
-          </p>
-
-          <p>
-            The concept was ambitious in its simplicity. Source the finest spirits and
-            ingredients. Hire bartenders who care about their craft. Create an atmosphere that
-            feels like walking into someone's living room — if that someone had exceptional
-            taste in bourbon and an ear for vinyl. Seating is first come, first serve. Always
-            has been.
-          </p>
-
-          {/* Photo placeholder */}
-          <div className="w-full aspect-[16/9] rounded-lg overflow-hidden bg-revival-dark border border-revival-border/50 my-8 flex items-center justify-center">
-            <span className="text-revival-cream-dim text-xs tracking-wide">Revival interior photo</span>
-          </div>
-
-          <p>
-            What started as one woman's vision quickly became downtown Lakeland's living room.
-            Revival has been the backdrop for first dates and anniversaries, business deals and
-            late-night confessions, quiet Tuesday evenings and packed Saturday nights. It's a
-            place that treats every guest like a regular and every regular like family.
-          </p>
-
-          <p>
-            We source the finest caliber of spirits and ingredients to supply you with an
-            unparalleled handcrafted beverage quality. We invite you to consult with your
-            bartender concerning spirits, cordials, and garnishes — or choose from our menu of
-            signature cocktails. We also host a generous list of domestic beer, craft beer, and
-            a variety of wines and champagnes.
-          </p>
-
-          <blockquote className="border-l-2 border-revival-amber/50 pl-6 py-2 my-8">
-            <p className="font-display text-xl text-revival-cream italic leading-relaxed">
-              "Isn't it funny how danger makes people passionate?"
-            </p>
-            <cite className="block mt-3 text-revival-cream-dim text-sm not-italic">
-              — Zelda Fitzgerald
-            </cite>
-          </blockquote>
-
-          <p>
-            We invite you to experiment with our mixologists in the pursuit of expanding your
-            comfort zone. Fine spirits and fine company — that's what Revival is about.
-          </p>
-
-          <p className="font-display text-xl text-revival-cream">
-            Welcome to Revival. Drink well.
-          </p>
-        </div>
-
-        {/* Catering callout */}
-        <div className="mt-16 p-8 rounded-lg border border-revival-border/50 bg-revival-charcoal text-center">
-          <h3 className="font-display text-xl text-revival-cream mb-3">Catering</h3>
-          <p className="text-revival-cream-muted text-sm leading-relaxed max-w-md mx-auto mb-6">
-            Not only are we refining the cocktail experience in our lounge, we can bring it to
-            your location. Our catering team offers a full service menu, customized drink
-            options, and full beer and wine options. Weddings, birthday parties, home
-            gatherings, corporate events, and more.
-          </p>
-          <Link
-            href="/contact"
-            className="
-              inline-flex items-center gap-2 px-6 py-3 rounded-full
-              border border-revival-amber/50 text-revival-amber text-sm tracking-wide
-              hover:bg-revival-amber/10 hover:border-revival-amber transition-colors
-            "
-          >
-            Inquire About Catering
-          </Link>
+      <section className="max-w-5xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+          {active.map((member) => (
+            <TeamCard key={member.id} member={member} />
+          ))}
         </div>
       </section>
 
@@ -254,16 +182,95 @@ export default function OurStoryPage() {
       </section>
 
       {/* ============================
-          THE TEAM
+          THE REVIVAL STORY
           ============================ */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
+      <section className="max-w-2xl mx-auto px-6 py-10">
         <h2 className="text-center text-revival-amber text-xs tracking-[0.3em] uppercase mb-10">
-          The Team
+          Our Story
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
-          {active.map((member) => (
-            <TeamCard key={member.id} member={member} />
-          ))}
+        <div className="space-y-6 text-revival-cream-muted leading-relaxed">
+          <p className="font-display text-2xl md:text-3xl text-revival-cream leading-snug">
+            No gimmicks. No snazz. Just the belief that a beverage program can challenge you to enjoy some of earth&apos;s finest pleasures.
+          </p>
+
+          <div className="w-12 h-px bg-revival-amber/50" />
+
+          <p>
+            Revival was born out of a simple idea: downtown Lakeland deserved a place where
+            craft cocktails were taken seriously, but the people never were. A place where you
+            could walk in alone and leave with a friend. Where the bartender remembers your
+            name, your drink, and what you were talking about last Tuesday.
+          </p>
+
+          <p>
+            In 2017, founder Jeannie Weaver Lopez transformed a vacant storefront at 119 South
+            Kentucky Avenue — a building that had housed everything from a record shop to a
+            costume store — into the warm, moody room you know today. She brought with her
+            years of experience from behind the bar at Linksters Tap Room and a vision for
+            something downtown Lakeland had never seen.
+          </p>
+
+          <p>
+            The concept was ambitious in its simplicity. Source the finest spirits and
+            ingredients. Hire bartenders who care about their craft. Create an atmosphere that
+            feels like walking into someone&apos;s living room — if that someone had exceptional
+            taste in bourbon and an ear for vinyl. Seating is first come, first serve. Always
+            has been.
+          </p>
+
+          <p>
+            What started as one woman&apos;s vision quickly became downtown Lakeland&apos;s living room.
+            Revival has been the backdrop for first dates and anniversaries, business deals and
+            late-night confessions, quiet Tuesday evenings and packed Saturday nights. It&apos;s a
+            place that treats every guest like a regular and every regular like family.
+          </p>
+
+          <p>
+            We source the finest caliber of spirits and ingredients to supply you with an
+            unparalleled handcrafted beverage quality. We invite you to consult with your
+            bartender concerning spirits, cordials, and garnishes — or choose from our menu of
+            signature cocktails. We also host a generous list of domestic beer, craft beer, and
+            a variety of wines and champagnes.
+          </p>
+
+          <blockquote className="border-l-2 border-revival-amber/50 pl-6 py-2 my-8">
+            <p className="font-display text-xl text-revival-cream italic leading-relaxed">
+              &ldquo;Isn&apos;t it funny how danger makes people passionate?&rdquo;
+            </p>
+            <cite className="block mt-3 text-revival-cream-dim text-sm not-italic">
+              — Zelda Fitzgerald
+            </cite>
+          </blockquote>
+
+          <p>
+            We invite you to experiment with our mixologists in the pursuit of expanding your
+            comfort zone. Fine spirits and fine company — that&apos;s what Revival is about.
+          </p>
+
+          <p className="font-display text-xl text-revival-cream">
+            Welcome to Revival. Drink well.
+          </p>
+        </div>
+
+        {/* Catering callout */}
+        <div className="mt-16 p-8 rounded-lg border border-revival-border/50 bg-revival-charcoal text-center">
+          <h3 className="font-display text-xl text-revival-cream mb-3">Catering</h3>
+          <p className="text-revival-cream-muted text-sm leading-relaxed max-w-md mx-auto mb-6">
+            Not only are we refining the cocktail experience in our lounge, we can bring it to
+            your location. Our catering team offers a full service menu, customized drink
+            options, and full beer and wine options. Weddings, birthday parties, home
+            gatherings, corporate events, and more.
+          </p>
+          <Link
+            href="/contact"
+            className="
+              inline-flex items-center gap-2 px-6 py-3 rounded-full
+              border border-revival-amber/50 text-revival-amber text-sm tracking-wide
+              hover:bg-revival-amber/10 hover:border-revival-amber transition-colors
+            "
+          >
+            Inquire About Catering
+          </Link>
         </div>
       </section>
 
@@ -278,7 +285,7 @@ export default function OurStoryPage() {
           <p className="text-center text-revival-cream-dim text-sm mb-10 max-w-md mx-auto">
             Friends of the bar who helped shape what Revival is today. Once Revival family, always Revival family.
           </p>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-6">
             {alumni.map((member) => (
               <TeamCard key={member.id} member={member} size="small" />
             ))}
