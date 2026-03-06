@@ -76,6 +76,19 @@ export default function JeanniePage() {
             Lakeland&apos;s cocktail scene. She built not just the business, but the culture.
           </p>
 
+          {/* Wesley's tribute from the original Revival website */}
+          <blockquote className="border-l-2 border-revival-amber/50 pl-6 py-2 my-10">
+            <p className="font-display text-xl text-revival-cream italic leading-relaxed">
+              &ldquo;Her handmade cocktails were as unique as her spirit — bold, imaginative,
+              and unforgettable. Though she is no longer with us, her legacy lives on in every
+              pour, every recipe, and every bartender who works under her eternal gaze and
+              guidance.&rdquo;
+            </p>
+            <cite className="block mt-3 text-revival-cream-dim text-sm not-italic">
+              — Wesley Barnett
+            </cite>
+          </blockquote>
+
           <p>
             She went on to open The Peach House in the historic Lake Morton neighborhood,
             bringing the same entrepreneurial spirit and community-first approach to a new
