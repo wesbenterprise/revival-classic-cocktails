@@ -1,38 +1,61 @@
 import { Gift } from 'lucide-react';
+import Image from 'next/image';
+import type { Metadata } from 'next';
 import { MerchItem } from '@/types/database';
 
+export const metadata: Metadata = {
+  title: 'Merch | Revival Craft Cocktails — Lakeland, FL',
+  description: 'Keychains, prints, tiki mugs, and more. Take a piece of Revival home with you. Available in-store at 119 S Kentucky Ave, Lakeland.',
+};
+
 // ============================================================
-// DEMO DATA — Replace with Supabase query
+// MERCH DATA — Replace with Supabase query when ready
 // ============================================================
-const DEMO_MERCH: MerchItem[] = [
+const MERCH_ITEMS: MerchItem[] = [
   {
-    id: '1', name: 'Revival Logo Tee', description: 'Black cotton tee with embroidered Revival wordmark.',
-    price: 30, image_url: null, is_available: true, sort_order: 0,
-    created_at: '', updated_at: '',
+    id: '1', name: 'House of Spirits Keychain',
+    description: 'Revival keychain — snake wrapped around martini glass, stars and moons. "House of Spirits."',
+    price: null, image_url: '/images/merch/house-keychain.png',
+    is_available: true, sort_order: 0, created_at: '', updated_at: '',
   },
   {
-    id: '2', name: 'Revival Cap', description: 'Structured dad cap. Black with amber stitching.',
-    price: 28, image_url: null, is_available: true, sort_order: 1,
-    created_at: '', updated_at: '',
+    id: '2', name: 'Pick Your Poison Keychain',
+    description: 'Revival keychain — snake and martini glass with "Pick Your Poison" detail.',
+    price: null, image_url: '/images/merch/poison-keychain.png',
+    is_available: true, sort_order: 1, created_at: '', updated_at: '',
   },
   {
-    id: '3', name: 'Bar Spoon Set', description: 'Professional-grade bar spoon and jigger. The same tools we use.',
-    price: 22, image_url: null, is_available: true, sort_order: 2,
-    created_at: '', updated_at: '',
+    id: '3', name: 'Palmistry Print',
+    description: 'Palmistry hand illustration with snake, star logo, and "Purveyors of Fine Spirits" text. Dark background with gold stars.',
+    price: null, image_url: '/images/merch/palmistry-print.png',
+    is_available: true, sort_order: 2, created_at: '', updated_at: '',
   },
   {
-    id: '4', name: 'Revival Rocks Glass', description: 'Heavy-bottom rocks glass with etched logo. Set of two.',
-    price: 24, image_url: null, is_available: true, sort_order: 3,
-    created_at: '', updated_at: '',
+    id: '4', name: 'Revival Star Logo',
+    description: 'The iconic 12-point star with gold serif R. Available on various items.',
+    price: null, image_url: '/images/merch/star-logo-item.png',
+    is_available: true, sort_order: 3, created_at: '', updated_at: '',
+  },
+  {
+    id: '5', name: 'Revival Forever',
+    description: 'Revival Forever wordmark with intertwined snake. Red and black striped snake, gold star accent.',
+    price: null, image_url: '/images/merch/revival-forever-item.png',
+    is_available: true, sort_order: 4, created_at: '', updated_at: '',
+  },
+  {
+    id: '6', name: 'Tiki Mug',
+    description: 'Revival tiki mug. The same ones we serve drinks in. Take one home.',
+    price: 25, image_url: null,
+    is_available: true, sort_order: 5, created_at: '', updated_at: '',
   },
 ];
 
-const GIFT_CARD_URL = '#'; // TODO: Replace with Toast gift card link
+const GIFT_CARD_URL = '#'; // TODO: Replace with Toast gift card link — waiting on Ryan
 
 // ============================================================
 
 function PlaceholderImage({ name, index }: { name: string; index: number }) {
-  const hues = [32, 28, 36, 24];
+  const hues = [32, 28, 36, 24, 30, 26];
   const hue = hues[index % hues.length];
   return (
     <div
@@ -49,7 +72,7 @@ function PlaceholderImage({ name, index }: { name: string; index: number }) {
 }
 
 export default function MerchPage() {
-  const available = DEMO_MERCH.filter((m) => m.is_available).sort((a, b) => a.sort_order - b.sort_order);
+  const available = MERCH_ITEMS.filter((m) => m.is_available).sort((a, b) => a.sort_order - b.sort_order);
 
   return (
     <div className="min-h-screen">
@@ -63,41 +86,40 @@ export default function MerchPage() {
 
       {/* Gift Card CTA */}
       <section className="max-w-2xl mx-auto px-6 mb-12">
-        <a
-          href={GIFT_CARD_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
           className="
             block rounded-lg border border-revival-amber/30 bg-revival-amber/5
-            p-8 text-center group hover:border-revival-amber/60 hover:bg-revival-amber/10
-            transition-all duration-300
+            p-8 text-center
           "
         >
           <Gift size={28} className="mx-auto text-revival-amber mb-4" />
-          <h2 className="font-display text-2xl text-revival-cream group-hover:text-revival-amber transition-colors">
+          <h2 className="font-display text-2xl text-revival-cream">
             Gift Cards
           </h2>
           <p className="mt-2 text-revival-cream-muted text-sm">
             Give the gift of a well-made drink. Available in any amount.
           </p>
-          <span className="inline-block mt-4 text-revival-amber text-sm tracking-wide">
-            Purchase a Gift Card →
+          <span className="inline-block mt-4 text-revival-amber/60 text-sm tracking-wide">
+            Coming Soon
           </span>
-        </a>
+        </div>
       </section>
 
       {/* Merch grid */}
       <section className="max-w-4xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {available.map((item, i) => (
             <div key={item.id} className="group">
               {/* Image */}
-              <div className="aspect-square rounded-lg overflow-hidden border border-revival-border/50 group-hover:border-revival-amber/30 transition-all duration-300">
+              <div className="aspect-square rounded-lg overflow-hidden border border-revival-border/50 group-hover:border-revival-amber/30 transition-all duration-300 bg-[#F5F0E8]">
                 {item.image_url ? (
-                  <img
+                  <Image
                     src={item.image_url}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    width={600}
+                    height={600}
+                    className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-2"
+                    sizes="(max-width: 768px) 50vw, 33vw"
                   />
                 ) : (
                   <PlaceholderImage name={item.name} index={i} />
@@ -114,15 +136,19 @@ export default function MerchPage() {
                     {item.description}
                   </p>
                 )}
-                {item.price && (
+                {item.price ? (
                   <p className="mt-2 text-revival-cream-muted text-sm tabular-nums">
                     ${item.price}
+                  </p>
+                ) : (
+                  <p className="mt-2 text-revival-cream-dim text-[10px] tracking-[0.15em] uppercase">
+                    Price available in-store
                   </p>
                 )}
               </div>
 
               {/* Available at bar note */}
-              <p className="mt-2 text-revival-cream-dim text-[10px] tracking-[0.15em] uppercase">
+              <p className="mt-1 text-revival-cream-dim text-[10px] tracking-[0.15em] uppercase">
                 Available at the bar
               </p>
             </div>
@@ -132,7 +158,7 @@ export default function MerchPage() {
         {/* Bottom note */}
         <div className="mt-16 text-center">
           <p className="text-revival-cream-dim text-xs tracking-wide">
-            All merch is available in-store only. Ask your bartender.
+            All merch is available in-store only. Prices available in-store — ask your bartender.
           </p>
         </div>
       </section>
