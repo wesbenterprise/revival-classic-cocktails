@@ -24,18 +24,20 @@ export default function InstagramEmbed() {
       </div>
 
       {/* Instagram feed snapshot */}
-      <a
-        href="https://instagram.com/revivallakeland"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block rounded-lg overflow-hidden border border-revival-border/30 hover:border-revival-amber/30 transition-all duration-300"
-      >
-        <img
-          src="/images/gallery/instagram-feed.jpg"
-          alt="Revival Lakeland Instagram — @revivallakeland"
-          className="w-full h-auto"
-        />
-      </a>
+      <div className="max-w-sm md:max-w-md mx-auto">
+        <a
+          href="https://instagram.com/revivallakeland"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block rounded-lg overflow-hidden border border-revival-border/30 hover:border-revival-amber/30 transition-all duration-300"
+        >
+          <img
+            src="/images/gallery/instagram-feed.jpg"
+            alt="Revival Lakeland Instagram — @revivallakeland"
+            className="w-full h-auto"
+          />
+        </a>
+      </div>
 
       <p className="text-center mt-4 text-revival-cream-dim text-xs">
         Follow us on Instagram for the latest cocktails, events, and vibes.
