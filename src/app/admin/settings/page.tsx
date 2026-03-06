@@ -1,33 +1,89 @@
 'use client';
 
-import { useState } from 'react';
-import { SITE_HOURS, SITE_ADDRESS, SITE_SOCIAL } from '@/lib/siteConfig';
+import { useState, useEffect, useCallback } from 'react';
+import { SITE_ADDRESS, SITE_SOCIAL } from '@/lib/siteConfig';
 import { DayOfWeek, HoursEntry } from '@/types/database';
 import { DAY_LABELS } from '@/lib/utils';
 
 const dayOrder: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
+interface HoursRow {
+  id: string;
+  day: DayOfWeek;
+  open_time: string | null;
+  close_time: string | null;
+  is_closed: boolean;
+}
+
 export default function AdminSettings() {
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const [hours, setHours] = useState<Record<DayOfWeek, HoursEntry>>(SITE_HOURS);
+  const [hours, setHours] = useState<Record<DayOfWeek, HoursEntry>>({
+    monday:    { open: '13:00', close: '00:00', is_closed: false },
+    tuesday:   { open: '13:00', close: '02:00', is_closed: false },
+    wednesday: { open: '13:00', close: '02:00', is_closed: false },
+    thursday:  { open: '13:00', close: '02:00', is_closed: false },
+    friday:    { open: '12:00', close: '02:00', is_closed: false },
+    saturday:  { open: '12:00', close: '02:00', is_closed: false },
+    sunday:    { open: '15:00', close: '00:00', is_closed: false },
+  });
 
   const [address, setAddress] = useState(SITE_ADDRESS);
-
   const [social, setSocial] = useState(SITE_SOCIAL);
   const [giftCardUrl, setGiftCardUrl] = useState('');
   const [announcement, setAnnouncement] = useState({ text: '', is_active: false });
   const [phone, setPhone] = useState('');
 
+  const loadHours = useCallback(async () => {
+    const res = await fetch('/api/revival/hours');
+    if (res.ok) {
+      const data: HoursRow[] = await res.json();
+      const h = { ...hours };
+      for (const row of data) {
+        h[row.day] = {
+          open: row.open_time,
+          close: row.close_time,
+          is_closed: row.is_closed,
+        };
+      }
+      setHours(h);
+    }
+    setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => { loadHours(); }, [loadHours]);
+
   const updateHours = (day: DayOfWeek, field: keyof HoursEntry, value: string | boolean) => {
     setHours((prev) => ({ ...prev, [day]: { ...prev[day], [field]: value } }));
   };
 
-  const handleSave = () => {
-    // In production: update Supabase site_settings
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+  const handleSave = async () => {
+    setSaving(true);
+    // Save hours to Supabase
+    const hoursPayload = dayOrder.map((day) => ({
+      day,
+      open_time: hours[day].open,
+      close_time: hours[day].close,
+      is_closed: hours[day].is_closed,
+    }));
+
+    const res = await fetch('/api/revival/hours', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(hoursPayload),
+    });
+
+    setSaving(false);
+    if (res.ok) {
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    }
   };
+
+  if (loading) return <div className="p-8 text-center text-[#888]">Loading settings…</div>;
 
   return (
     <div className="p-4 lg:p-8 max-w-3xl mx-auto space-y-8">
@@ -38,11 +94,12 @@ export default function AdminSettings() {
         </div>
         <button
           onClick={handleSave}
+          disabled={saving}
           className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
             saved ? 'bg-[#4ADE80] text-[#0A0A0A]' : 'bg-[#C8A050] text-[#0A0A0A] hover:bg-[#D4B068]'
-          }`}
+          } disabled:opacity-50`}
         >
-          {saved ? '✓ Saved' : 'Save Changes'}
+          {saving ? 'Saving…' : saved ? '✓ Saved' : 'Save Changes'}
         </button>
       </div>
 
@@ -160,11 +217,12 @@ export default function AdminSettings() {
       <div className="pb-8">
         <button
           onClick={handleSave}
+          disabled={saving}
           className={`w-full px-5 py-3 rounded-xl text-sm font-medium transition-all ${
             saved ? 'bg-[#4ADE80] text-[#0A0A0A]' : 'bg-[#C8A050] text-[#0A0A0A] hover:bg-[#D4B068]'
-          }`}
+          } disabled:opacity-50`}
         >
-          {saved ? '✓ Changes Saved' : 'Save All Changes'}
+          {saving ? 'Saving…' : saved ? '✓ Changes Saved' : 'Save All Changes'}
         </button>
       </div>
     </div>
