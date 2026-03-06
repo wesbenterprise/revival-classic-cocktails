@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { TeamMember } from '@/types/database';
 
 export const metadata: Metadata = {
-  title: 'Our Story | Revival Craft Cocktails',
+  title: 'Our Team | Revival Craft Cocktails \u2014 Lakeland',
   description:
-    'The story of Revival Craft Cocktails — from a vision on Kentucky Avenue to downtown Lakeland\'s living room.',
+    'Meet the bartenders and team behind Revival Craft Cocktails in downtown Lakeland, Florida.',
 };
 
 // ============================================================

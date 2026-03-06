@@ -1,6 +1,13 @@
+import type { Metadata } from 'next';
 import { MapPin, Clock, Car, Users, Navigation, Phone } from 'lucide-react';
 import { DayOfWeek, HoursConfig } from '@/types/database';
 import { formatTime12, getDayLabel, getTodayDow } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: 'Visit Revival | Hours, Parking & Directions \u2014 Downtown Lakeland',
+  description:
+    '119 S Kentucky Ave, Lakeland FL. Open 7 days. Happy hour Mon\u2013Fri 1\u20137pm. Free street parking after 3:30. Walk-in only, first come first served.',
+};
 
 // ============================================================
 // REAL DATA — Will move to Supabase site_settings

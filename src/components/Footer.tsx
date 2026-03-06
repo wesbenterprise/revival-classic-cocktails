@@ -11,8 +11,14 @@ export default function Footer() {
               <img src="/images/revival-logo.jpg" alt="Revival Craft Cocktails" className="h-12 w-auto" />
             </Link>
             <p className="mt-3 text-sm text-revival-cream-dim">
-              A craft cocktail bar in Lakeland, FL
+              119 S Kentucky Ave, Lakeland, FL 33801
             </p>
+            <a
+              href="tel:+18636066090"
+              className="mt-1 inline-block text-sm text-revival-cream-dim hover:text-revival-amber transition-colors"
+            >
+              (863) 606-6090
+            </a>
           </div>
 
           {/* Quick links */}

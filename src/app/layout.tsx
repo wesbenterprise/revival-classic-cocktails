@@ -4,12 +4,13 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Revival Craft Cocktails | Lakeland, FL",
+  title: "Revival Craft Cocktails | Downtown Lakeland's Cocktail Bar",
   description:
-    "A craft cocktail bar in Lakeland, Florida. Dark corners, bright drinks, good company.",
+    "Lakeland's dedicated craft cocktail bar. In-house syrups, custom garnishes, new Weekly Revival every Tuesday. Happy hour Mon\u2013Fri 1\u20137pm. Walk in tonight.",
   openGraph: {
     title: "Revival Craft Cocktails",
-    description: "A craft cocktail bar in Lakeland, Florida.",
+    description:
+      "Lakeland's dedicated craft cocktail bar. In-house syrups, custom garnishes, new Weekly Revival every Tuesday.",
     type: "website",
     locale: "en_US",
     siteName: "Revival Craft Cocktails",
@@ -23,6 +24,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["Bar", "LocalBusiness"],
+              name: "Revival Craft Cocktails",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "119 S Kentucky Ave",
+                addressLocality: "Lakeland",
+                addressRegion: "FL",
+                postalCode: "33801",
+                addressCountry: "US",
+              },
+              telephone: "(863) 606-6090",
+              priceRange: "$$",
+              servesCuisine: "Cocktails",
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.8",
+                reviewCount: "767",
+              },
+              hasMenu: "https://revivallakeland.com/menu",
+              url: "https://revivallakeland.com",
+              sameAs: [
+                "https://instagram.com/revivallakeland",
+                "https://facebook.com/revivallakeland",
+              ],
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 28.0395,
+                longitude: -81.9535,
+              },
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         {/* Moody lounge atmosphere backdrop — swap inner divs with <img src="/images/lounge-bg.jpg" className="w-full h-full object-cover" /> when ready */}
         <div className="fixed inset-0 -z-10" aria-hidden="true">

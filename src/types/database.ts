@@ -1,8 +1,24 @@
 // ============================================================
-// Revival Database Types
+// Revival Database Types — UPDATED to match real menu
 // ============================================================
 
-export type MenuCategory = 'house' | 'classics' | 'spirit_free' | 'beer_wine' | 'rotating';
+export type MenuCategory =
+  | 'old_fashioneds'
+  | 'seasonal'
+  | 'classics'
+  | 'tiki'
+  | 'spritz'
+  | 'happy_hour_6'
+  | 'happy_hour_8'
+  | 'mocktails'
+  | 'spirit_flights'
+  | 'wine'
+  | 'draft_beer'
+  | 'bottles_cans'
+  | 'non_alcoholic';
+
+export type WineSubcategory = 'bubbles' | 'white' | 'red';
+
 export type TeamStatus = 'active' | 'alumni';
 export type EventType = 'event' | 'private';
 export type GalleryCategory = 'room' | 'drinks' | 'people' | 'nights';
@@ -17,12 +33,20 @@ export interface MenuItem {
   description: string | null;
   price: number | null;
   spirit_base: string | null;
-  badge: 'new' | 'seasonal' | null;
+  badge: 'new' | 'seasonal' | 'revised' | 'premium' | null;
   image_url: string | null;
+  subcategory: WineSubcategory | null;
   sort_order: number;
   is_archived: boolean;
   created_at: string;
   updated_at: string;
+}
+
+export interface MenuCategoryConfig {
+  id: MenuCategory;
+  label: string;
+  subtitle: string;
+  sort_order: number;
 }
 
 export interface ScheduleRecurring {
@@ -117,7 +141,6 @@ export interface HoursEntry {
 
 export type HoursConfig = Record<DayOfWeek, HoursEntry>;
 
-// "Tonight" response from get_tonight() function
 export interface TonightData {
   type: 'private' | 'event' | 'recurring' | 'fallback';
   title: string;

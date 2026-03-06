@@ -8,34 +8,28 @@ import WeeklyStrip from '@/components/WeeklyStrip';
 import { TonightData, ScheduleRecurring } from '@/types/database';
 import { getTodayDow } from '@/lib/utils';
 
-const DEMO_SPECIALS: ScheduleRecurring[] = [
+const WEEKLY_SPECIALS: ScheduleRecurring[] = [
   {
-    id: '1', day: 'tuesday', title: 'Industry Night',
-    description: 'Half off for our friends in the service industry.',
+    id: '1', day: 'monday', title: 'Champagne & Charcuterie',
+    description: "It's like lunchables but better (you also catch a buzz).",
     image_url: null, is_active: true,
     created_at: '', updated_at: '',
   },
   {
-    id: '2', day: 'wednesday', title: 'Whiskey Wednesday',
-    description: '$2 off all bourbon pours.',
+    id: '2', day: 'tuesday', title: 'Test Drink Tuesday',
+    description: 'Put down the vodka soda and step outside your comfort zone. Try out one of three weekly drinks invented by yours truly.',
     image_url: null, is_active: true,
     created_at: '', updated_at: '',
   },
   {
-    id: '3', day: 'thursday', title: 'Dealer\'s Choice',
-    description: 'Tell us a flavor. Trust the bartender.',
+    id: '3', day: 'wednesday', title: 'Wanderlust Wednesday',
+    description: 'Grab a drink but leave your baggage at home. Every Wednesday, we pick a spot on the map and showcase three drinks that highlight the local cocktail culture.',
     image_url: null, is_active: true,
     created_at: '', updated_at: '',
   },
   {
-    id: '4', day: 'friday', title: 'Vinyl Fridays',
-    description: 'Guest DJ spins vinyl all night.',
-    image_url: null, is_active: true,
-    created_at: '', updated_at: '',
-  },
-  {
-    id: '5', day: 'saturday', title: 'Late Night Revival',
-    description: 'Doors open til 2 AM. The night is yours.',
+    id: '4', day: 'thursday', title: 'Tiki Thursday',
+    description: "Because who doesn't love a tiny paper umbrella in their drink? Explore the varying tastes of tropical drinks.",
     image_url: null, is_active: true,
     created_at: '', updated_at: '',
   },
@@ -52,7 +46,7 @@ export default function HomePage() {
 
   // Dynamic tonight's special based on current day (EST)
   const today = getTodayDow();
-  const tonightSpecial = DEMO_SPECIALS.find(s => s.day === today);
+  const tonightSpecial = WEEKLY_SPECIALS.find(s => s.day === today);
   const tonightData: TonightData = tonightSpecial
     ? { type: 'recurring', title: tonightSpecial.title, description: tonightSpecial.description || '' }
     : { type: 'recurring', title: 'Craft Cocktails', description: 'Handcrafted drinks in the heart of downtown Lakeland.' };
@@ -140,10 +134,22 @@ export default function HomePage() {
       </section>
 
       {/* ============================
+          WEEKLY REVIVAL FEATURE
+          ============================ */}
+      <section className="max-w-2xl mx-auto text-center px-6 py-12">
+        <div className="rounded-lg border border-revival-red/40 bg-revival-red/10 px-6 py-5">
+          <p className="text-revival-amber text-xs tracking-[0.3em] uppercase mb-2">Weekly Revival</p>
+          <p className="text-revival-cream text-sm leading-relaxed">
+            For one week only: a custom recipe or a riff on a classic. <span className="text-revival-amber font-medium">$12.</span>
+          </p>
+        </div>
+      </section>
+
+      {/* ============================
           WEEKLY SPECIALS
           ============================ */}
       <section className="max-w-6xl mx-auto">
-        <WeeklyStrip specials={DEMO_SPECIALS} />
+        <WeeklyStrip specials={WEEKLY_SPECIALS} />
       </section>
 
       {/* ============================
@@ -168,6 +174,18 @@ export default function HomePage() {
         </Link>
         <p className="mt-8 text-revival-cream-dim text-xs tracking-wide">
           No reservations. Just walk in.
+        </p>
+      </section>
+
+      {/* SEO body copy */}
+      <section className="max-w-2xl mx-auto px-6 pb-16">
+        <p className="text-revival-cream-dim text-sm leading-relaxed text-center">
+          Revival Craft Cocktails is downtown Lakeland&apos;s dedicated craft cocktail bar.
+          Every drink is built from scratch with in-house syrups, hand-cut garnishes, and
+          carefully sourced spirits. From our signature Old Fashioned program to the weekly
+          rotating cocktail, there&apos;s always something new to discover. Happy hour runs
+          Monday through Friday, 1 PM to 7 PM, with craft cocktails starting at $6. Walk in
+          tonight — no reservations needed.
         </p>
       </section>
     </div>
