@@ -134,22 +134,40 @@ export default function HomePage() {
       </section>
 
       {/* ============================
-          WEEKLY REVIVAL FEATURE
-          ============================ */}
-      <section className="max-w-2xl mx-auto text-center px-6 py-12">
-        <div className="rounded-lg border border-revival-red/40 bg-revival-red/10 px-6 py-5">
-          <p className="text-revival-amber text-xs tracking-[0.3em] uppercase mb-2">Weekly Revival</p>
-          <p className="text-revival-cream text-sm leading-relaxed">
-            For one week only: a custom recipe or a riff on a classic. <span className="text-revival-amber font-medium">$12.</span>
-          </p>
-        </div>
-      </section>
-
-      {/* ============================
           WEEKLY SPECIALS
           ============================ */}
       <section className="max-w-6xl mx-auto">
         <WeeklyStrip specials={WEEKLY_SPECIALS} />
+      </section>
+
+      {/* ============================
+          WEEKLY REVIVAL FEATURE
+          ============================ */}
+      <section className="max-w-2xl mx-auto text-center px-6 py-12">
+        <div className="rounded-lg border border-revival-amber/30 bg-revival-amber/5 p-8">
+          <p className="text-revival-amber text-xs tracking-[0.3em] uppercase mb-3">
+            Weekly Revival
+          </p>
+          <p className="font-display text-2xl text-revival-cream">
+            For one week only
+          </p>
+          <p className="mt-3 text-revival-cream-muted text-sm leading-relaxed max-w-md mx-auto">
+            A custom recipe or a riff on a classic. New every week. $12.
+          </p>
+        </div>
+      </section>
+
+      {/* SEO body copy */}
+      <section className="max-w-2xl mx-auto px-6 py-8">
+        <p className="text-revival-cream-muted text-sm leading-relaxed">
+          Revival Craft Cocktails is downtown Lakeland&apos;s dedicated cocktail bar, located at
+          119 South Kentucky Avenue just off Munn Park. Every drink on our menu is built with
+          in-house syrups, fresh-pressed juices, and custom garnishes — from our signature program
+          of 15 Old Fashioned variations to seasonal originals, tiki drinks, and spirit-free cocktails.
+          Happy hour runs Monday through Friday, 1 PM to 7 PM, with well cocktails starting at $6.
+          Try a new Weekly Revival every week for $12, or let our bartenders craft something just for
+          you with Bartender&apos;s Choice. Walk in tonight — no reservations needed.
+        </p>
       </section>
 
       {/* ============================
@@ -174,18 +192,6 @@ export default function HomePage() {
         </Link>
         <p className="mt-8 text-revival-cream-dim text-xs tracking-wide">
           No reservations. Just walk in.
-        </p>
-      </section>
-
-      {/* SEO body copy */}
-      <section className="max-w-2xl mx-auto px-6 pb-16">
-        <p className="text-revival-cream-dim text-sm leading-relaxed text-center">
-          Revival Craft Cocktails is downtown Lakeland&apos;s dedicated craft cocktail bar.
-          Every drink is built from scratch with in-house syrups, hand-cut garnishes, and
-          carefully sourced spirits. From our signature Old Fashioned program to the weekly
-          rotating cocktail, there&apos;s always something new to discover. Happy hour runs
-          Monday through Friday, 1 PM to 7 PM, with craft cocktails starting at $6. Walk in
-          tonight — no reservations needed.
         </p>
       </section>
     </div>

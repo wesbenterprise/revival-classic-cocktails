@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   description:
     "Lakeland's dedicated craft cocktail bar. In-house syrups, custom garnishes, new Weekly Revival every Tuesday. Happy hour Mon\u2013Fri 1\u20137pm. Walk in tonight.",
   openGraph: {
-    title: "Revival Craft Cocktails",
+    title: "Revival Craft Cocktails | Downtown Lakeland's Cocktail Bar",
     description:
-      "Lakeland's dedicated craft cocktail bar. In-house syrups, custom garnishes, new Weekly Revival every Tuesday.",
+      "Lakeland's dedicated craft cocktail bar. In-house syrups, custom garnishes, new Weekly Revival every Tuesday. Happy hour Mon\u2013Fri 1\u20137pm.",
     type: "website",
     locale: "en_US",
     siteName: "Revival Craft Cocktails",
