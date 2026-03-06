@@ -6,25 +6,16 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import InstagramEmbed from '@/components/InstagramEmbed';
 
 // ============================================================
-// DEMO DATA — Replace with Supabase query
+// Gallery — Brand illustrations (real photography coming soon)
 // ============================================================
-const DEMO_PHOTOS: GalleryPhoto[] = [
-  { id: '1', image_url: '', category: 'room', caption: 'The bar at golden hour', sort_order: 0, created_at: '' },
-  { id: '2', image_url: '', category: 'room', caption: 'Candlelit corner booth', sort_order: 1, created_at: '' },
-  { id: '3', image_url: '', category: 'room', caption: 'Bookshelves and warm light', sort_order: 2, created_at: '' },
-  { id: '4', image_url: '', category: 'room', caption: 'Kentucky Ave storefront', sort_order: 3, created_at: '' },
-  { id: '5', image_url: '', category: 'room', caption: 'The apothecary wall', sort_order: 4, created_at: '' },
-  { id: '6', image_url: '', category: 'drinks', caption: 'Old Fashioned, done right', sort_order: 0, created_at: '' },
-  { id: '7', image_url: '', category: 'drinks', caption: 'Smoke and citrus', sort_order: 1, created_at: '' },
-  { id: '8', image_url: '', category: 'drinks', caption: 'Espresso Martini', sort_order: 2, created_at: '' },
-  { id: '9', image_url: '', category: 'drinks', caption: 'Seasonal special', sort_order: 3, created_at: '' },
-  { id: '10', image_url: '', category: 'people', caption: 'Behind the bar', sort_order: 0, created_at: '' },
-  { id: '11', image_url: '', category: 'people', caption: 'Friday night regulars', sort_order: 1, created_at: '' },
-  { id: '12', image_url: '', category: 'people', caption: 'Cheers', sort_order: 2, created_at: '' },
-  { id: '13', image_url: '', category: 'nights', caption: 'Vinyl Friday', sort_order: 0, created_at: '' },
-  { id: '14', image_url: '', category: 'nights', caption: 'A packed house', sort_order: 1, created_at: '' },
-  { id: '15', image_url: '', category: 'nights', caption: 'Guest bartender night', sort_order: 2, created_at: '' },
-  { id: '16', image_url: '', category: 'nights', caption: 'Holiday pop-up', sort_order: 3, created_at: '' },
+const GALLERY_PHOTOS: GalleryPhoto[] = [
+  { id: '1', image_url: '/images/illustrations/dreamer.png', category: 'art', caption: 'The Dreamer', sort_order: 0, created_at: '' },
+  { id: '2', image_url: '/images/illustrations/mystic.png', category: 'art', caption: 'The Mystic', sort_order: 1, created_at: '' },
+  { id: '3', image_url: '/images/illustrations/old-fashioned.png', category: 'art', caption: 'The Old Fashioned', sort_order: 2, created_at: '' },
+  { id: '4', image_url: '/images/illustrations/fishing.png', category: 'art', caption: 'Gone Fishing', sort_order: 3, created_at: '' },
+  { id: '5', image_url: '/images/illustrations/moon.png', category: 'art', caption: 'Moonlight', sort_order: 4, created_at: '' },
+  { id: '6', image_url: '/images/illustrations/snake-guy.png', category: 'art', caption: 'The Snake Charmer', sort_order: 5, created_at: '' },
+  { id: '7', image_url: '/images/illustrations/twins.png', category: 'art', caption: 'The Twins', sort_order: 6, created_at: '' },
 ];
 
 // ============================================================
@@ -35,32 +26,16 @@ const CATEGORY_CONFIG: { key: GalleryCategory | 'all'; label: string }[] = [
   { key: 'drinks', label: 'The Drinks' },
   { key: 'people', label: 'The People' },
   { key: 'nights', label: 'The Nights' },
+  { key: 'art', label: 'Brand Art' },
 ];
-
-function PlaceholderTile({ caption, index }: { caption: string | null; index: number }) {
-  const hues = [30, 35, 25, 40, 20, 32, 28, 38, 22, 36, 26, 34, 24, 42, 30, 35];
-  const hue = hues[index % hues.length];
-  return (
-    <div
-      className="w-full h-full flex items-end p-4"
-      style={{
-        background: `linear-gradient(135deg, hsl(${hue}, 30%, 8%) 0%, hsl(${hue}, 40%, 14%) 50%, hsl(${hue}, 25%, 6%) 100%)`,
-      }}
-    >
-      {caption && (
-        <span className="text-xs text-revival-cream-dim/60 tracking-wide">{caption}</span>
-      )}
-    </div>
-  );
-}
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory | 'all'>('all');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filtered = activeCategory === 'all'
-    ? DEMO_PHOTOS
-    : DEMO_PHOTOS.filter((p) => p.category === activeCategory);
+    ? GALLERY_PHOTOS
+    : GALLERY_PHOTOS.filter((p) => p.category === activeCategory);
 
   const sortedPhotos = [...filtered].sort((a, b) => a.sort_order - b.sort_order);
 
@@ -79,13 +54,6 @@ export default function GalleryPage() {
     }
   };
 
-  const heightClasses = [
-    'aspect-[3/4]', 'aspect-square', 'aspect-[4/5]', 'aspect-square',
-    'aspect-[3/4]', 'aspect-[4/5]', 'aspect-square', 'aspect-[3/4]',
-    'aspect-square', 'aspect-[4/5]', 'aspect-[3/4]', 'aspect-square',
-    'aspect-[4/5]', 'aspect-[3/4]', 'aspect-square', 'aspect-[4/5]',
-  ];
-
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -96,9 +64,20 @@ export default function GalleryPage() {
         </p>
       </section>
 
+      {/* Coming soon banner */}
+      <div className="max-w-3xl mx-auto px-6 mb-8">
+        <div className="rounded-lg border border-revival-amber/30 bg-revival-amber/5 px-6 py-4 text-center">
+          <p className="text-revival-amber text-xs tracking-[0.2em] uppercase mb-1">Coming Soon</p>
+          <p className="text-revival-cream-muted text-sm leading-relaxed">
+            Gallery coming soon — professional photography in progress.
+            Enjoy our brand illustrations in the meantime.
+          </p>
+        </div>
+      </div>
+
       {/* Category filters */}
       <nav className="sticky top-16 z-30 bg-revival-black/90 backdrop-blur-md border-b border-revival-border/30">
-        <div className="max-w-6xl mx-auto flex justify-center gap-1 px-4 py-3">
+        <div className="max-w-6xl mx-auto flex justify-center gap-1 px-4 py-3 overflow-x-auto">
           {CATEGORY_CONFIG.map((cat) => (
             <button
               key={cat.key}
@@ -124,21 +103,26 @@ export default function GalleryPage() {
             <button
               key={photo.id}
               onClick={() => openLightbox(i)}
-              className={`
+              className="
                 block w-full rounded-lg overflow-hidden border border-revival-border/30
                 hover:border-revival-amber/30 transition-all duration-300
-                cursor-pointer break-inside-avoid
-                ${heightClasses[i % heightClasses.length]}
-              `}
+                cursor-pointer break-inside-avoid aspect-[3/4]
+              "
             >
-              {photo.image_url ? (
+              {photo.category === 'art' ? (
+                <div className="w-full h-full bg-[#F5EDE0] flex items-center justify-center p-4">
+                  <img
+                    src={photo.image_url}
+                    alt={photo.caption || 'Revival brand illustration'}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              ) : (
                 <img
                   src={photo.image_url}
                   alt={photo.caption || 'Revival gallery photo'}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
-              ) : (
-                <PlaceholderTile caption={photo.caption} index={i} />
               )}
             </button>
           ))}
@@ -185,19 +169,20 @@ export default function GalleryPage() {
             className="max-w-4xl max-h-[85vh] mx-16 flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {sortedPhotos[lightboxIndex].image_url ? (
+            {sortedPhotos[lightboxIndex].category === 'art' ? (
+              <div className="max-w-full max-h-[75vh] rounded-lg overflow-hidden bg-[#F5EDE0] p-8 flex items-center justify-center">
+                <img
+                  src={sortedPhotos[lightboxIndex].image_url}
+                  alt={sortedPhotos[lightboxIndex].caption || 'Brand illustration'}
+                  className="max-w-full max-h-[65vh] object-contain"
+                />
+              </div>
+            ) : (
               <img
                 src={sortedPhotos[lightboxIndex].image_url}
                 alt={sortedPhotos[lightboxIndex].caption || 'Gallery photo'}
                 className="max-w-full max-h-[75vh] object-contain rounded-lg"
               />
-            ) : (
-              <div className="w-[600px] max-w-full aspect-[4/3] rounded-lg overflow-hidden">
-                <PlaceholderTile
-                  caption={sortedPhotos[lightboxIndex].caption}
-                  index={lightboxIndex}
-                />
-              </div>
             )}
             {sortedPhotos[lightboxIndex].caption && (
               <p className="mt-4 text-revival-cream-muted text-sm text-center">
